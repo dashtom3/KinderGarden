@@ -1,0 +1,12 @@
+*.class
+
+target/
+
+workspace.xml
+
+*.war
+
+.idea/artifacts
+
+.idea/dataSources.ids
+.idea/dataSources.xml
