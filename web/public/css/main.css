@@ -1,0 +1,235 @@
+
+body {
+    background-image: url('img/background.jpg');
+    background-color: white;
+    /*	min-height: 1024px;
+        overflow: scroll;*/
+}
+
+.fontStyle {
+    font-family: 'Arial';
+    font-weight: 900;
+    font-style: normal;
+    color: white;
+}
+
+#container {
+    width: 960px;
+    height: 2600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#navigator {
+    position: absolute;
+    top: 0;
+    height: 60px;
+    width: 960px;
+    background: #5A98CC;
+    border-radius: 5px;
+    opacity: 0.9;
+}
+
+#navigator>ul {
+    position: relative;
+    top: 20px;
+}
+
+#navigator>ul>li {
+    list-style-type: none;
+    float: left;
+    margin-right: 50px;
+    cursor: pointer;
+}
+
+#navigator>ul>li>a {
+    color: white;
+}
+
+#navigator>ul>li:first-child {
+    margin-left: 100px;
+}
+
+.logoRow {
+    height: 150px;
+    width: 960px;
+    background: white;
+    border-radius: 5px;
+    opacity: 0.9;
+    position: relative;
+    top: 60px;
+    z-index: -1;
+}
+
+.logoImgRow {
+    z-index: 0;
+    background: transparent;
+    top: -90px;
+}
+
+.logoImgRow>img {
+    position: relative;
+    left: 30px;
+    top: -15px;
+}
+
+.logoImgRow p:nth-child(2) {
+    position: relative;
+    top: -90px;
+    left: 130px;
+    font-family: 'Arial Black';
+    color: #684543;
+    font-size: 23px;
+}
+
+.logoImgRow p:nth-child(3) {
+    position: relative;
+    top: -100px;
+    left: 130px;
+    font-family: 'Arial Black';
+    color: #684543;
+    font-size: 50px;
+}
+
+#carouselDiv {
+    width: 960px;
+    height: 400px;
+    top: -90px;
+}
+
+#carouselDiv img {
+    height: 400px;
+    width: 960px;
+}
+
+.introBackgroundRow {
+    opacity: 0.9;
+    border-radius: 5px;
+    width: 960px;
+    height: 300px;
+    background: #5A98CC;
+    z-index: -1;
+    position: relative;
+    top: -90px;
+}
+
+.introRow {
+    position: relative;
+    top: -390px;
+    background: transparent;
+}
+
+.introRow p,h3 {
+    position: relative;
+}
+
+.introRow h3 {
+    white-space: nowrap;
+    font-weight: 400;
+    font-size: 55px;
+    top: 20px;
+    text-align: center;
+}
+
+.introRow p {
+    word-wrap: break-word;
+    font-size: 21px;
+    top: 30px;
+    padding-left: 30px;
+}
+
+#familyDiv {
+    width: 960px;
+    position: relative;
+    top: -410px;
+}
+
+#familyDiv>div {
+    width: 960px;
+    margin: 0;
+}
+
+#familyHeader {
+    height: 120px;
+    text-align: center;
+    font-size: 43px;
+    color: #684543;
+    font-weight: 100;
+    background: white;
+    opacity: 0.9;
+}
+
+#familyHeader>p {
+    padding-top: 25px;
+}
+
+#familyDiv img {
+    width: 100%;
+    height: 100%;
+}
+
+#familyDiv .description {
+    width: 100%;
+    height: 100%;
+    background: #5A98CC;
+    word-wrap: break-word;
+    font-size: 21px;
+    opacity: 0.9;
+    border: solid 1px white;
+    padding: 10px;
+}
+
+.row, .row>div {
+    padding: 0;
+}
+.row>div {
+    height: 100%;
+}
+
+#contactDiv {
+    background: #5A98CC;
+    opacity: 0.9;
+    width: 100%;
+    height: 550px;
+    /*	position: relative;
+        top: -350px;*/
+    margin: 0;
+}
+
+#contactMsg {
+    padding: 100px;
+}
+
+#contactMsg>p {
+    padding-top: 30px;
+}
+
+#contactMsg>p>span {
+    font-family: 'Arial Black';
+    color: white;
+    font-size: 24px;
+}
+
+#contactMsg>p:first-child>span {
+    font-size: 40px;
+}
+#contactMsg>p:first-child {
+    padding-top: 0;
+}
+
+#mapContainer {
+    height: 90%;
+    width: 90%;
+    margin-top: 25px;
+    border-radius: 20px;
+}
+
+#contactFooter {
+    width: 100%;
+    height: 200px;
+}
+
+#contactFooter>img {
+    width: 100%;
+    height: 100%;
+}

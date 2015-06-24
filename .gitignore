@@ -8,5 +8,7 @@ workspace.xml
 
 .idea/artifacts
 
+out/
+
 .idea/dataSources.ids
 .idea/dataSources.xml
