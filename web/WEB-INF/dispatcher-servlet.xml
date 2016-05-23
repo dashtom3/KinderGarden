@@ -12,10 +12,10 @@
 
        <context:component-scan base-package="com.jeff.controller"/>
 
-       <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-              <property name="prefix" value="/WEB-INF/pages/"/>
-              <property name="suffix" value=".jsp"/>
-       </bean>
+       <!--<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">-->
+              <!--<property name="prefix" value="/WEB-INF/pages/"/>-->
+              <!--<property name="suffix" value=".jsp"/>-->
+       <!--</bean>-->
        <mvc:annotation-driven />
        <!--<mvc:interceptors>-->
        <!--<bean class="com.tongji.citylens.interceptor.EncodeInterceptor"/>-->

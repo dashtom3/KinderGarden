@@ -1,0 +1,177 @@
+body {
+	background-image: url('img/background.jpg');
+	background-color: white;
+}
+
+.carousel img {
+/*	height: 400px;
+	width: 990px;*/
+	height: 100% !important;
+	width: 100% !important;
+}
+
+.carousel-inner {
+	width: 100%;
+	height: 100%;
+}
+
+.carousel-inner .item {
+	height: 100%;
+}
+
+.jeff-container {
+/*	width: 960px;
+	margin-left: auto;
+	margin-right: auto;*/
+}
+
+.jeff-nav {
+	height: 60px;
+	/*background: #5A98CC;*/
+	border-radius: 5px;
+	opacity: 0.9;
+}
+
+.jeff-nav>ul {
+	position: relative;
+	top: 20px;
+}
+
+.jeff-nav>ul>li {
+	list-style-type: none;
+	float: left;
+	margin-right: 50px;
+	cursor: pointer;
+}
+
+.jeff-nav>ul>li>a {
+	color: #684543;
+	font-size: 18px;
+}
+
+.jeff-nav>ul>li:first-child {
+	margin-left: 100px;
+}
+
+.jeff-color-white {
+	color: white;
+}
+
+.jeff-color-brown {
+	color: #684543;
+}
+
+.jeff-bg-white {
+	background-color: white;
+}
+
+.jeff-bg-wheat-opacity {
+	background-color: rgba(254, 251, 222, 0.95);
+}
+
+.jeff-bg-blue-opacity {
+	/*background-color: rgba(90, 152, 204, 0.9);*/
+	background-color: rgba(41, 72, 109, 0.9);
+}
+
+.jeff-bg-white-opacity {
+	background-color: rgba(255,255,255,0.9);
+}
+
+.jeff-font-family-Arail {
+	font-family: 'Arial Black';
+	font-style: normal;
+}
+
+.jeff-font-lg {
+	font-size: 45px;
+}
+
+.jeff-font-md {
+	font-size: 25px;
+}
+
+.jeff-font-sm {
+
+}
+
+.jeff-text-center {
+	text-align: center;
+}
+
+.jeff-padding-offset {
+	padding: 20px;
+}
+
+.jeff-padding-top-offset {
+	padding-top: 20px;
+}
+
+.jeff-padding-bottom-offset {
+	padding-bottom: 20px;
+}
+
+.jeff-margin-top-offset {
+	margin-top: 20px;
+}
+
+.jeff-margin-offset {
+	margin: 20px;
+}
+
+.jeff-no-padding {
+	padding: 0;
+}
+.jeff-no-margin {
+	margin: 0;
+}
+
+.jeff-border-white {
+	border: 1px solid white;
+}
+
+.jeff-footer {
+	width: 100%;
+	height: 200px;
+}
+
+.jeff-footer>img {
+	width: 100%;
+	height: 100%;
+}
+
+.jeff-contact>div {
+	height: 100%;
+}
+
+.jeff-auto-word-break {
+	word-wrap: break-word;
+    word-break: normal;
+}
+
+#mapContainer {
+	height: 100%;
+	width: 100%;
+	border-radius: 20px;
+}
+
+.jeff-menu-item {
+	position: relative;
+	/*height: 20%;*/
+	padding: 0;
+	margin: 0;
+}
+
+.jeff-menu-item img {
+	height: 100%;
+	width: 100%;
+}
+
+.jeff-menu-item>.jeff-description {
+	position: absolute;
+	right: 0;
+	bottom: 0;
+	width: 80px;
+	text-align: center;
+}
+

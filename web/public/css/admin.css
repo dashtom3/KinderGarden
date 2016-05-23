@@ -1,0 +1,9 @@
+body {
+    background-image: none;
+}
+.jeff_nav_logo {
+    width: 50px;
+    position: absolute;
+    top: -20px;
+    left: 50px;
+}

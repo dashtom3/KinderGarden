@@ -1,0 +1,23 @@
+
+
+.jeff-show-item {
+	border: 1px solid white;
+}
+
+.jeff-show-item>div {
+	padding: 0;
+	margin: 0;
+}
+
+.jeff-show-item img{
+	height: 400px;
+	width: 100%;
+}
+
+.jeff-show-item .jeff-description {
+	height: 100%;
+	width: 100%;
+	padding: 20px;
+	/*border: solid 1px white;*/
+}
+

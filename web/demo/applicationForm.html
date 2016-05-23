@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+	<meta http-equiv="content-type" content="text/html;charset=UTF-8">
+	<title>JeffKindergarten</title>
+	<script src="jquery/jquery-1.11.2.js"></script>
+	<link rel="stylesheet" type="text/css" href="bootstrap-3.3.4/css/bootstrap-theme.min.css">
+	<link rel="stylesheet" type="text/css" href="bootstrap-3.3.4/css/bootstrap.min.css">
+	<script src="bootstrap-3.3.4/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="component.css">
+	<link rel="stylesheet" type="text/css" href="homepage.css">
+</head>
+<body>
+	<div class="container">
+		<div class="row">
+			<div class="col-md-offset-1 col-md-10 jeff-nav jeff-bg-wheat-opacity">
+				<ul>
+					<li><a>Sign in / Register</a></li>
+					<li><a>News</a></li>
+					<li><a>About Us</a></li>
+					<li><a>Forum</a></li>
+					<li><a>Cam</a></li>
+					<li><a>Contact</a></li>
+				</ul>
+			</div>
+		</div>
+
+		<div class="row jeff-contact jeff-bg-blue-opacity jeff-no-margin jeff-padding-offset" style="margin-top: 30px;">
+			<div class="col-md-5 jeff-color-white" style="padding: 50px">
+				<div class="row jeff-font-lg">Get in Touch</div>
+				<div class="row jeff-font-md">Tel:&nbsp;+86&nbsp;22&nbsp;23310236</div>
+				<div class="row jeff-font-md">Fax:&nbsp;+86&nbsp;22&nbsp;23310636</div>
+				<div class="row jeff-font-md">Email:&nbsp;jeff@jeffhouse.net</div>
+			</div>
+			<div class="col-md-7">
+				<div id="mapContainer" style="height: 400px"></div>
+			</div>
+		</div>
+		<div class="row jeff-footer jeff-no-margin">
+			<img src="img/footer.png">
+		</div>		
+	</div>
+
+	<script type="text/javascript">
+		$(function() {
+			$('.carousel').carousel();
+			// 百度地图API功能
+			var map = new BMap.Map("mapContainer");          
+			map.centerAndZoom(new BMap.Point(117.212694, 39.116151), 17);
+			// 添加带有定位的导航控件
+			var navigationControl = new BMap.NavigationControl({
+			// 靠左上角位置
+			anchor: BMAP_ANCHOR_TOP_LEFT,
+			// LARGE类型
+			type: BMAP_NAVIGATION_CONTROL_LARGE,
+			// 启用显示定位
+			enableGeolocation: true
+			});
+			map.addControl(navigationControl);
+			map.addControl(new BMap.ScaleControl());
+			map.addControl(new BMap.MapTypeControl());
+			map.enableScrollWheelZoom();
+
+			var local = new BMap.LocalSearch(map, {
+				renderOptions:{map: map}
+			});
+			local.search("杰夫幼儿园");
+		});
+	</script>
+	<script src="http://api.map.baidu.com/api?v=2.0&ak=8ISSk3V3dafhgbYCLrFh9SWG"></script>
+</body>
+</html>
