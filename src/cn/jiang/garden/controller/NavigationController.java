@@ -18,7 +18,7 @@ public class NavigationController {
 //        tt.setApplicationId(1);
 //        tt.setPassword("123");
 //        tt.setType(0);
-//        tt.setUserName("prf");
+//        tt.setUserName("潘瑞峰");
 //        boolean flag = userDao.addUser(tt);
 //
 //        System.out.print(flag);
