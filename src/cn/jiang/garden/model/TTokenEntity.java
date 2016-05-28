@@ -7,19 +7,20 @@ import java.sql.Date;
  * Created by Administrator on 2016/5/28.
  */
 @Entity
-@Table(name = "t_token", schema = "")
+@Table(name = "t_token")
 public class TTokenEntity {
-    private int id;
+    private Long id;
     private String token;
     private Date registerDate;
 
     @Id
+    @GeneratedValue
     @Column(name = "id")
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -59,7 +60,7 @@ public class TTokenEntity {
 
     @Override
     public int hashCode() {
-        int result = id;
+        int result = (int) (id ^ (id >>> 32));
         result = 31 * result + (token != null ? token.hashCode() : 0);
         result = 31 * result + (registerDate != null ? registerDate.hashCode() : 0);
         return result;

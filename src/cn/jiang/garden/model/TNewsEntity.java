@@ -9,22 +9,23 @@ import java.sql.Date;
 @Entity
 @Table(name = "t_news")
 public class TNewsEntity {
-    private int id;
+    private Long id;
     private String name;
     private String intro;
     private Date publishDate;
     private Integer type;
-    private Integer imgId1;
-    private Integer imgId2;
-    private Integer imgId3;
+    private long imgId1;
+    private long imgId2;
+    private long imgId3;
 
     @Id
+    @GeneratedValue
     @Column(name = "id")
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -70,31 +71,31 @@ public class TNewsEntity {
 
     @Basic
     @Column(name = "img_id1")
-    public Integer getImgId1() {
+    public long getImgId1() {
         return imgId1;
     }
 
-    public void setImgId1(Integer imgId1) {
+    public void setImgId1(long imgId1) {
         this.imgId1 = imgId1;
     }
 
     @Basic
     @Column(name = "img_id2")
-    public Integer getImgId2() {
+    public long getImgId2() {
         return imgId2;
     }
 
-    public void setImgId2(Integer imgId2) {
+    public void setImgId2(long imgId2) {
         this.imgId2 = imgId2;
     }
 
     @Basic
     @Column(name = "img_id3")
-    public Integer getImgId3() {
+    public long getImgId3() {
         return imgId3;
     }
 
-    public void setImgId3(Integer imgId3) {
+    public void setImgId3(long imgId3) {
         this.imgId3 = imgId3;
     }
 
@@ -106,9 +107,9 @@ public class TNewsEntity {
         TNewsEntity that = (TNewsEntity) o;
 
         if (id != that.id) return false;
-        if (imgId1 != null ? !imgId1.equals(that.imgId1) : that.imgId1 != null) return false;
-        if (imgId2 != null ? !imgId2.equals(that.imgId2) : that.imgId2 != null) return false;
-        if (imgId3 != null ? !imgId3.equals(that.imgId3) : that.imgId3 != null) return false;
+        if (imgId1 != that.imgId1) return false;
+        if (imgId2 != that.imgId2) return false;
+        if (imgId3 != that.imgId3) return false;
         if (intro != null ? !intro.equals(that.intro) : that.intro != null) return false;
         if (name != null ? !name.equals(that.name) : that.name != null) return false;
         if (publishDate != null ? !publishDate.equals(that.publishDate) : that.publishDate != null) return false;
@@ -119,14 +120,14 @@ public class TNewsEntity {
 
     @Override
     public int hashCode() {
-        int result = id;
+        int result = (int) (id ^ (id >>> 32));
         result = 31 * result + (name != null ? name.hashCode() : 0);
         result = 31 * result + (intro != null ? intro.hashCode() : 0);
         result = 31 * result + (publishDate != null ? publishDate.hashCode() : 0);
         result = 31 * result + (type != null ? type.hashCode() : 0);
-        result = 31 * result + (imgId1 != null ? imgId1.hashCode() : 0);
-        result = 31 * result + (imgId2 != null ? imgId2.hashCode() : 0);
-        result = 31 * result + (imgId3 != null ? imgId3.hashCode() : 0);
+        result = 31 * result + (int) (imgId1 ^ (imgId1 >>> 32));
+        result = 31 * result + (int) (imgId2 ^ (imgId2 >>> 32));
+        result = 31 * result + (int) (imgId3 ^ (imgId3 >>> 32));
         return result;
     }
 }

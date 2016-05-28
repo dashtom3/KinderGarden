@@ -9,7 +9,7 @@ import java.sql.Date;
 @Entity
 @Table(name = "t_job_application")
 public class TJobApplicationEntity {
-    private int id;
+    private Long id;
     private String name;
     private Integer sex;
     private Date birth;
@@ -19,12 +19,13 @@ public class TJobApplicationEntity {
     private String mail;
 
     @Id
+    @GeneratedValue
     @Column(name = "id")
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -119,7 +120,7 @@ public class TJobApplicationEntity {
 
     @Override
     public int hashCode() {
-        int result = id;
+        int result = (int) (id ^ (id >>> 32));
         result = 31 * result + (name != null ? name.hashCode() : 0);
         result = 31 * result + (sex != null ? sex.hashCode() : 0);
         result = 31 * result + (birth != null ? birth.hashCode() : 0);

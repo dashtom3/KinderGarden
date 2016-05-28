@@ -8,19 +8,20 @@ import javax.persistence.*;
 @Entity
 @Table(name = "t_user")
 public class TUserEntity {
-    private int id;
+    private Long id;
     private String userName;
     private String password;
-    private Integer applicationId;
+    private long applicationId;
     private Integer type;
 
     @Id
+    @GeneratedValue
     @Column(name = "id")
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -46,11 +47,11 @@ public class TUserEntity {
 
     @Basic
     @Column(name = "application_id")
-    public Integer getApplicationId() {
+    public long getApplicationId() {
         return applicationId;
     }
 
-    public void setApplicationId(Integer applicationId) {
+    public void setApplicationId(long applicationId) {
         this.applicationId = applicationId;
     }
 
@@ -71,9 +72,8 @@ public class TUserEntity {
 
         TUserEntity that = (TUserEntity) o;
 
+        if (applicationId != that.applicationId) return false;
         if (id != that.id) return false;
-        if (applicationId != null ? !applicationId.equals(that.applicationId) : that.applicationId != null)
-            return false;
         if (password != null ? !password.equals(that.password) : that.password != null) return false;
         if (type != null ? !type.equals(that.type) : that.type != null) return false;
         if (userName != null ? !userName.equals(that.userName) : that.userName != null) return false;
@@ -83,10 +83,10 @@ public class TUserEntity {
 
     @Override
     public int hashCode() {
-        int result = id;
+        int result = (int) (id ^ (id >>> 32));
         result = 31 * result + (userName != null ? userName.hashCode() : 0);
         result = 31 * result + (password != null ? password.hashCode() : 0);
-        result = 31 * result + (applicationId != null ? applicationId.hashCode() : 0);
+        result = 31 * result + (int) (applicationId ^ (applicationId >>> 32));
         result = 31 * result + (type != null ? type.hashCode() : 0);
         return result;
     }

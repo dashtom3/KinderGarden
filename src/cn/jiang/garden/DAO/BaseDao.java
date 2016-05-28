@@ -74,7 +74,7 @@ public class BaseDao<T>{
      *
      * @param entity
      */
-    public void save(T entity) {
+    public boolean save(T entity) {
         Session session = getSession();
         try{
             session.beginTransaction();
@@ -82,8 +82,12 @@ public class BaseDao<T>{
             session.getTransaction().commit();
             session.flush();
         }catch(Exception e){
+            e.printStackTrace();
             session.getTransaction().rollback();
+
+            return false;
         }
+        return true;
     }
 
     /**
@@ -191,6 +195,6 @@ public class BaseDao<T>{
 
     public  Session getSession() {
         return sessionFactory.getCurrentSession();
-        //return sessionFactory.openSession();
+//        return sessionFactory.openSession();
     }
 }

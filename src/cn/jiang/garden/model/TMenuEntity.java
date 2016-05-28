@@ -8,17 +8,18 @@ import javax.persistence.*;
 @Entity
 @Table(name = "t_menu")
 public class TMenuEntity {
-    private int id;
+    private Long id;
     private String name;
     private Integer type;
 
     @Id
+    @GeneratedValue
     @Column(name = "id")
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -58,7 +59,7 @@ public class TMenuEntity {
 
     @Override
     public int hashCode() {
-        int result = id;
+        int result = (int) (id ^ (id >>> 32));
         result = 31 * result + (name != null ? name.hashCode() : 0);
         result = 31 * result + (type != null ? type.hashCode() : 0);
         return result;

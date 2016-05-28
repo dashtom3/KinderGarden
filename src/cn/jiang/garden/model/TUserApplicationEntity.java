@@ -8,7 +8,7 @@ import javax.persistence.*;
 @Entity
 @Table(name = "t_user_application")
 public class TUserApplicationEntity {
-    private int id;
+    private Long id;
     private String record;
     private String firstRelation;
     private String firstCellPhone;
@@ -23,12 +23,13 @@ public class TUserApplicationEntity {
     private String insuranceProject;
 
     @Id
+    @GeneratedValue
     @Column(name = "id")
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -189,7 +190,7 @@ public class TUserApplicationEntity {
 
     @Override
     public int hashCode() {
-        int result = id;
+        int result = (int) (id ^ (id >>> 32));
         result = 31 * result + (record != null ? record.hashCode() : 0);
         result = 31 * result + (firstRelation != null ? firstRelation.hashCode() : 0);
         result = 31 * result + (firstCellPhone != null ? firstCellPhone.hashCode() : 0);

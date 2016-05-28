@@ -9,7 +9,7 @@ import java.sql.Date;
 @Entity
 @Table(name = "t_recruit")
 public class TRecruitEntity {
-    private int id;
+    private Long id;
     private String name;
     private String address;
     private String intro;
@@ -18,12 +18,13 @@ public class TRecruitEntity {
     private Integer state;
 
     @Id
+    @GeneratedValue
     @Column(name = "id")
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -107,7 +108,7 @@ public class TRecruitEntity {
 
     @Override
     public int hashCode() {
-        int result = id;
+        int result = (int) (id ^ (id >>> 32));
         result = 31 * result + (name != null ? name.hashCode() : 0);
         result = 31 * result + (address != null ? address.hashCode() : 0);
         result = 31 * result + (intro != null ? intro.hashCode() : 0);
