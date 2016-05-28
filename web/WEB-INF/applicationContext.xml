@@ -22,11 +22,20 @@
                 <prop key="hibernate.show_sql">true</prop>
                 <prop key="hiberante.format_sql">true</prop>
                 <prop key="hiberante.connection.autocommit">true</prop>
+                <prop key="hibernate.connection.url">jdbc:mysql://182.92.226.65:3306/jeff</prop>
             </props>
         </property>
         <property name="annotatedClasses">
             <list>
 
+                <value>cn.jiang.garden.model.TFileEntity</value>
+                <value>cn.jiang.garden.model.TJobApplicationEntity</value>
+                <value>cn.jiang.garden.model.TMenuEntity</value>
+                <value>cn.jiang.garden.model.TNewsEntity</value>
+                <value>cn.jiang.garden.model.TRecruitEntity</value>
+                <value>cn.jiang.garden.model.TTokenEntity</value>
+                <value>cn.jiang.garden.model.TUserEntity</value>
+                <value>cn.jiang.garden.model.TUserApplicationEntity</value>
             </list>
         </property>
     </bean>
@@ -35,7 +44,7 @@
         <property name="driverClassName" value="com.mysql.jdbc.Driver" />
         <property name="url" value="jdbc:mysql://182.92.226.65:3306/jeff" />
         <property name="username" value="root" />
-        <property name="password" value="Jeffgarden1" />
+        <property name="password" value="Jeffhouse1" />
     </bean>
 
     <bean id="transactionManager"
