@@ -3,7 +3,7 @@ package cn.jiang.garden.model;
 import javax.persistence.*;
 
 /**
- * Created by Administrator on 2016/5/28.
+ * Created by Administrator on 2016/5/29.
  */
 @Entity
 @Table(name = "t_file")

@@ -95,7 +95,7 @@ public class BaseDao<T>{
      *
      * @param entity
      */
-    public void delete(T entity) {
+    public boolean delete(T entity) {
         Session session = getSession();
         try{
             session.beginTransaction();
@@ -103,8 +103,11 @@ public class BaseDao<T>{
             session.getTransaction().commit();
             session.flush();
         }catch(Exception e){
+            e.printStackTrace();
             session.getTransaction().rollback();
+            return false;
         }
+        return true;
     }
 
     /**
@@ -124,7 +127,7 @@ public class BaseDao<T>{
      *
      * @param entity
      */
-    public void update(T entity) {
+    public boolean update(T entity) {
         Session session = getSession();
         try{
             session.beginTransaction();
@@ -132,8 +135,11 @@ public class BaseDao<T>{
             session.getTransaction().commit();
             session.flush();
         }catch(Exception e){
+            e.printStackTrace();
             session.getTransaction().rollback();
+            return false;
         }
+        return true;
     }
 
     /**

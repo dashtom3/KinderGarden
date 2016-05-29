@@ -4,7 +4,7 @@ import javax.persistence.*;
 import java.sql.Date;
 
 /**
- * Created by Administrator on 2016/5/28.
+ * Created by Administrator on 2016/5/29.
  */
 @Entity
 @Table(name = "t_job_application")
@@ -17,6 +17,8 @@ public class TJobApplicationEntity {
     private String address;
     private String tel;
     private String mail;
+    private Long fileId;
+    private Long imgId;
 
     @Id
     @GeneratedValue
@@ -99,6 +101,26 @@ public class TJobApplicationEntity {
         this.mail = mail;
     }
 
+    @Basic
+    @Column(name = "file_id")
+    public Long getFileId() {
+        return fileId;
+    }
+
+    public void setFileId(Long fileId) {
+        this.fileId = fileId;
+    }
+
+    @Basic
+    @Column(name = "img_id")
+    public Long getImgId() {
+        return imgId;
+    }
+
+    public void setImgId(Long imgId) {
+        this.imgId = imgId;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -106,7 +128,9 @@ public class TJobApplicationEntity {
 
         TJobApplicationEntity that = (TJobApplicationEntity) o;
 
+        if (fileId != that.fileId) return false;
         if (id != that.id) return false;
+        if (imgId != that.imgId) return false;
         if (address != null ? !address.equals(that.address) : that.address != null) return false;
         if (birth != null ? !birth.equals(that.birth) : that.birth != null) return false;
         if (education != null ? !education.equals(that.education) : that.education != null) return false;
@@ -128,6 +152,8 @@ public class TJobApplicationEntity {
         result = 31 * result + (address != null ? address.hashCode() : 0);
         result = 31 * result + (tel != null ? tel.hashCode() : 0);
         result = 31 * result + (mail != null ? mail.hashCode() : 0);
+        result = 31 * result + (int) (fileId ^ (fileId >>> 32));
+        result = 31 * result + (int) (imgId ^ (imgId >>> 32));
         return result;
     }
 }

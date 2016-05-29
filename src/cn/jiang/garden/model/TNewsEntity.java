@@ -4,7 +4,7 @@ import javax.persistence.*;
 import java.sql.Date;
 
 /**
- * Created by Administrator on 2016/5/28.
+ * Created by Administrator on 2016/5/29.
  */
 @Entity
 @Table(name = "t_news")
@@ -14,9 +14,9 @@ public class TNewsEntity {
     private String intro;
     private Date publishDate;
     private Integer type;
-    private long imgId1;
-    private long imgId2;
-    private long imgId3;
+    private Long imgId1;
+    private Long imgId2;
+    private Long imgId3;
 
     @Id
     @GeneratedValue
@@ -71,31 +71,31 @@ public class TNewsEntity {
 
     @Basic
     @Column(name = "img_id1")
-    public long getImgId1() {
+    public Long getImgId1() {
         return imgId1;
     }
 
-    public void setImgId1(long imgId1) {
+    public void setImgId1(Long imgId1) {
         this.imgId1 = imgId1;
     }
 
     @Basic
     @Column(name = "img_id2")
-    public long getImgId2() {
+    public Long getImgId2() {
         return imgId2;
     }
 
-    public void setImgId2(long imgId2) {
+    public void setImgId2(Long imgId2) {
         this.imgId2 = imgId2;
     }
 
     @Basic
     @Column(name = "img_id3")
-    public long getImgId3() {
+    public Long getImgId3() {
         return imgId3;
     }
 
-    public void setImgId3(long imgId3) {
+    public void setImgId3(Long imgId3) {
         this.imgId3 = imgId3;
     }
 

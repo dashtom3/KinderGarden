@@ -7,4 +7,7 @@ import cn.jiang.garden.model.TUserEntity;
  */
 public interface TUserDao {
     boolean addUser(TUserEntity user);
+    boolean deleteUser(TUserEntity user);
+    boolean updateUser(TUserEntity user);
+    TUserEntity findByUserName(String userName);
 }

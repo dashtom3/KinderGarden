@@ -4,7 +4,7 @@ import javax.persistence.*;
 import java.sql.Date;
 
 /**
- * Created by Administrator on 2016/5/28.
+ * Created by Administrator on 2016/5/29.
  */
 @Entity
 @Table(name = "t_recruit")

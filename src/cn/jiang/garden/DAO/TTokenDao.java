@@ -9,4 +9,8 @@ import java.util.List;
  */
 public interface TTokenDao {
     boolean addToken(TTokenEntity token);
+    boolean deleteToken(TTokenEntity token);
+    boolean updateToken(TTokenEntity token);
+    TTokenEntity findByTokenString(String token);
+    TTokenEntity findByUserId(Long userId);
 }

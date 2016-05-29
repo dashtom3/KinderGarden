@@ -1,9 +1,10 @@
 package cn.jiang.garden.model;
 
 import javax.persistence.*;
+import java.sql.Date;
 
 /**
- * Created by Administrator on 2016/5/28.
+ * Created by Administrator on 2016/5/29.
  */
 @Entity
 @Table(name = "t_user")
@@ -11,8 +12,9 @@ public class TUserEntity {
     private Long id;
     private String userName;
     private String password;
-    private long applicationId;
+    private Long applicationId;
     private Integer type;
+    private Date registerDate;
 
     @Id
     @GeneratedValue
@@ -47,11 +49,11 @@ public class TUserEntity {
 
     @Basic
     @Column(name = "application_id")
-    public long getApplicationId() {
+    public Long getApplicationId() {
         return applicationId;
     }
 
-    public void setApplicationId(long applicationId) {
+    public void setApplicationId(Long applicationId) {
         this.applicationId = applicationId;
     }
 
@@ -65,6 +67,16 @@ public class TUserEntity {
         this.type = type;
     }
 
+    @Basic
+    @Column(name = "register_date")
+    public Date getRegisterDate() {
+        return registerDate;
+    }
+
+    public void setRegisterDate(Date registerDate) {
+        this.registerDate = registerDate;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -75,6 +87,7 @@ public class TUserEntity {
         if (applicationId != that.applicationId) return false;
         if (id != that.id) return false;
         if (password != null ? !password.equals(that.password) : that.password != null) return false;
+        if (registerDate != null ? !registerDate.equals(that.registerDate) : that.registerDate != null) return false;
         if (type != null ? !type.equals(that.type) : that.type != null) return false;
         if (userName != null ? !userName.equals(that.userName) : that.userName != null) return false;
 
@@ -88,6 +101,7 @@ public class TUserEntity {
         result = 31 * result + (password != null ? password.hashCode() : 0);
         result = 31 * result + (int) (applicationId ^ (applicationId >>> 32));
         result = 31 * result + (type != null ? type.hashCode() : 0);
+        result = 31 * result + (registerDate != null ? registerDate.hashCode() : 0);
         return result;
     }
 }

@@ -3,7 +3,7 @@ package cn.jiang.garden.model;
 import javax.persistence.*;
 
 /**
- * Created by Administrator on 2016/5/28.
+ * Created by Administrator on 2016/5/29.
  */
 @Entity
 @Table(name = "t_menu")
@@ -11,6 +11,7 @@ public class TMenuEntity {
     private Long id;
     private String name;
     private Integer type;
+    private Long imgId;
 
     @Id
     @GeneratedValue
@@ -43,6 +44,16 @@ public class TMenuEntity {
         this.type = type;
     }
 
+    @Basic
+    @Column(name = "img_id")
+    public Long getImgId() {
+        return imgId;
+    }
+
+    public void setImgId(Long imgId) {
+        this.imgId = imgId;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -51,6 +62,7 @@ public class TMenuEntity {
         TMenuEntity that = (TMenuEntity) o;
 
         if (id != that.id) return false;
+        if (imgId != that.imgId) return false;
         if (name != null ? !name.equals(that.name) : that.name != null) return false;
         if (type != null ? !type.equals(that.type) : that.type != null) return false;
 
@@ -62,6 +74,7 @@ public class TMenuEntity {
         int result = (int) (id ^ (id >>> 32));
         result = 31 * result + (name != null ? name.hashCode() : 0);
         result = 31 * result + (type != null ? type.hashCode() : 0);
+        result = 31 * result + (int) (imgId ^ (imgId >>> 32));
         return result;
     }
 }
