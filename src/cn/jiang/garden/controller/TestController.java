@@ -28,6 +28,8 @@ public class TestController {
         TFileEntity fileEntity = new TFileEntity();
         fileEntity.setType(8);
         fileEntity.setName("test");
-        return fileService.uploadFile(request,"token",fileEntity,file);
+         fileService.uploadFile(request,"token",fileEntity,file);
+        System.out.println(fileEntity.getId());
+        return null;
     }
 }
