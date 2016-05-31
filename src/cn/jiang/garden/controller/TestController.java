@@ -27,6 +27,7 @@ public class TestController {
     ) {
         TFileEntity fileEntity = new TFileEntity();
         fileEntity.setType(8);
+        fileEntity.setId(null);
         fileEntity.setName("test");
          fileService.uploadFile(request,"token",fileEntity,file);
         System.out.println(fileEntity.getId());
