@@ -86,4 +86,21 @@ foreign key(user_id) references t_user(id)
 insert into t_file( id,type) values(11,-1);--代表空文件
 --t_file id 1-6主页6张图， 7 菜品， 8 新闻， 9 简历， 10 照片，11空文件
 --t_news type 0主页 1 新闻，
-insert into t_menu
+insert into t_file(id,name,type,intro,img_src) values(1,'test1',1,'test','src');
+insert into t_file(id,name,type,intro,img_src) values(2,'test2',2,'test','src');
+insert into t_file(id,name,type,intro,img_src) values(3,'test3',3,'test','src');
+insert into t_file(id,name,type,intro,img_src) values(4,'test4',4,'test','src');
+insert into t_file(id,name,type,intro,img_src) values(5,'test5',5,'test','src');
+insert into t_file(id,name,type,intro,img_src) values(6,'test6',6,'test','src');
+
+t_news(name,intro,publish_date ,type ,
+img_id1 ,
+img_id2 ,
+img_id3 
+) values('主页','主页','2016-06-01',0,15,15,15);
+
+t_news(name,intro,publish_date ,type ,
+img_id1 ,
+img_id2 ,
+img_id3 
+) values('新闻','新闻','2016-06-01',1,15,15,15);
