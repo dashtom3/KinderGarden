@@ -39,4 +39,9 @@ public class TUserDaoImpl extends BaseDao<TUserEntity> implements TUserDao {
         }
         return null;
     }
+
+    @Override
+    public TUserEntity getUserById(Long id) {
+        return get(id);
+    }
 }

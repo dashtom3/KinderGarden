@@ -20,6 +20,27 @@ public class TJobApplicationEntity {
     private Long fileId;
     private Long imgId;
 
+    private String file_src;
+    private String img_src;
+
+    @Transient
+    public String getFile_src() {
+        return file_src;
+    }
+
+    public void setFile_src(String file_src) {
+        this.file_src = file_src;
+    }
+
+    @Transient
+    public String getImg_src() {
+        return img_src;
+    }
+
+    public void setImg_src(String img_src) {
+        this.img_src = img_src;
+    }
+
     @Id
     @GeneratedValue
     @Column(name = "id")

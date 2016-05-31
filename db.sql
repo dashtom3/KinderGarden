@@ -83,4 +83,7 @@ login_date timestamp,
 foreign key(user_id) references t_user(id)
 )ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-
+insert into t_file( id,type) values(11,-1);--代表空文件
+--t_file id 1-6主页6张图， 7 菜品， 8 新闻， 9 简历， 10 照片，11空文件
+--t_news type 0主页 1 新闻，
+insert into t_menu

@@ -10,4 +10,5 @@ public interface TUserDao {
     boolean deleteUser(TUserEntity user);
     boolean updateUser(TUserEntity user);
     TUserEntity findByUserName(String userName);
+    TUserEntity getUserById(Long id);
 }
