@@ -8,7 +8,7 @@ import java.util.List;
 
 public interface TFileDao {
     boolean addFile(TFileEntity file);
-    boolean deleteFile(TFileEntity file);
+    boolean deleteFile(Long fileId);
     boolean updateFile(TFileEntity file);
     DataWrapper<List<TFileEntity>> findByType(Integer type);
 
