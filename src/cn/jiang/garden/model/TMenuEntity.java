@@ -12,6 +12,15 @@ public class TMenuEntity {
     private String name;
     private Integer type;
     private Long imgId;
+    private TFileEntity image;
+    @Transient
+    public TFileEntity getImage() {
+        return image;
+    }
+
+    public void setImage(TFileEntity image) {
+        this.image = image;
+    }
 
     @Id
     @GeneratedValue

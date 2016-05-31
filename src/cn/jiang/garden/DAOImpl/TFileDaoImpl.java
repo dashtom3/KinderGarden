@@ -21,8 +21,8 @@ public class TFileDaoImpl extends BaseDao<TFileEntity> implements TFileDao {
     }
 
     @Override
-    public boolean deleteFile(TFileEntity file) {
-        return delete(file);
+    public boolean deleteFile(Long fileId) {
+        return delete(get(fileId));
     }
 
     @Override
@@ -36,7 +36,9 @@ public class TFileDaoImpl extends BaseDao<TFileEntity> implements TFileDao {
         List<TFileEntity> ret = new ArrayList<TFileEntity>();
         Session session = getSession();
         Criteria criteria = session.createCriteria(TFileEntity.class);
-        criteria.add(Restrictions.eq("type", type));
+        if(type != null) {
+            criteria.add(Restrictions.eq("type", type));
+        }
         try {
             ret = criteria.list();
         }catch (Exception e){

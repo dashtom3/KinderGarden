@@ -2,6 +2,7 @@ package cn.jiang.garden.model;
 
 import javax.persistence.*;
 import java.sql.Date;
+import java.util.List;
 
 /**
  * Created by Administrator on 2016/5/29.
@@ -17,6 +18,15 @@ public class TNewsEntity {
     private Long imgId1;
     private Long imgId2;
     private Long imgId3;
+    private List<TFileEntity> homeList;
+
+    @Transient
+    public List<TFileEntity> getHomeList() {
+        return homeList;
+    }
+    public void setHomeList(List<TFileEntity> homeList) {
+        this.homeList = homeList;
+    }
 
     @Id
     @GeneratedValue
