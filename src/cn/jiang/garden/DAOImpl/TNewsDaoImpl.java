@@ -31,7 +31,7 @@ public class TNewsDaoImpl extends BaseDao<TNewsEntity> implements TNewsDao {
         return update(tnews);
     }
     @Override
-    public DataWrapper<List<TNewsEntity>> getTNewsList(){
+    public DataWrapper<List<TNewsEntity>> getTNewsList(int type){
         DataWrapper<List<TNewsEntity>> retDataWrapper = new DataWrapper<List<TNewsEntity>>();
         List<TNewsEntity> ret = new ArrayList<TNewsEntity>();
         Session session = getSession();
@@ -44,5 +44,11 @@ public class TNewsDaoImpl extends BaseDao<TNewsEntity> implements TNewsDao {
         }
         retDataWrapper.setData(ret);
         return retDataWrapper;
+
+    }
+
+    @Override
+    public DataWrapper<TNewsEntity> getTNews(int type) {
+        return null;
     }
 }

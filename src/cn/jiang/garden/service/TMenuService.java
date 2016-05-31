@@ -3,6 +3,7 @@ package cn.jiang.garden.service;
 import cn.jiang.garden.model.TFileEntity;
 import cn.jiang.garden.model.TMenuEntity;
 import cn.jiang.garden.utils.DataWrapper;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
 import java.util.List;
@@ -12,8 +13,8 @@ import java.util.List;
  */
 public interface TMenuService {
     DataWrapper<Void> updateMenu(TMenuEntity tMenu, String tokenString);
-    DataWrapper<Void> addMenuItem(TFileEntity tFile, File file, String tokenString);
-    DataWrapper<Void> updateMenuItem(TFileEntity tFile,File file,String tokenString);
+    DataWrapper<Void> addMenuItem(TFileEntity tFile, String tokenString);
+    DataWrapper<Void> updateMenuItem(TFileEntity tFile, String tokenString);
     DataWrapper<Void> deleteMenuItem(Long itemId, String tokenString);
     DataWrapper<List<TMenuEntity>> getMenuList(String tokenString);
     DataWrapper<List<TFileEntity>> getMenuItemList(String tokenString);
