@@ -11,4 +11,5 @@ public interface TUserDao {
     boolean updateUser(TUserEntity user);
     TUserEntity findByUserName(String userName);
     TUserEntity getUserById(Long id);
+    TUserEntity getUserByToken(String token);
 }

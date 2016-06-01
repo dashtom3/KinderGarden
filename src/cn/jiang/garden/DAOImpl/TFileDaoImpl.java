@@ -48,5 +48,10 @@ public class TFileDaoImpl extends BaseDao<TFileEntity> implements TFileDao {
         return retDataWrapper;
     }
 
+    @Override
+    public TFileEntity getFileById(Long id) {
+        return get(id);
+    }
+
 
 }

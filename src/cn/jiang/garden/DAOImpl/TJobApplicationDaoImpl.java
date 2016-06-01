@@ -33,10 +33,10 @@ public class TJobApplicationDaoImpl extends BaseDao<TJobApplicationEntity> imple
                 + "jobApplication.birth as birth,"
                 + "jobApplication.education as education," +
                 "jobApplication.address as address," +
-                "jobApplication tel as tel," +
+                "jobApplication.tel as tel," +
                 "jobApplication.mail as mail," +
-                "(select img_src from t_file where id = jobApplication.file_id) as file_src," +
-                "(select img_src from t_file where id = jobApplication.img_id) as img_src "
+                "(select img_src from t_file where id = jobApplication.file_id) as fileSrc," +
+                "(select img_src from t_file where id = jobApplication.img_id) as imgSrc "
                 + "from t_job_application jobApplication "
                 + "order by jobApplication.id desc";
         Session session = getSession();
@@ -49,8 +49,8 @@ public class TJobApplicationDaoImpl extends BaseDao<TJobApplicationEntity> imple
                 .addScalar("address", StandardBasicTypes.STRING)
                 .addScalar("tel", StandardBasicTypes.STRING)
                 .addScalar("mail", StandardBasicTypes.STRING)
-                .addScalar("file_src", StandardBasicTypes.STRING)
-                .addScalar("img_src", StandardBasicTypes.STRING)
+                .addScalar("fileSrc", StandardBasicTypes.STRING)
+                .addScalar("imgSrc", StandardBasicTypes.STRING)
                 .setResultTransformer(Transformers.aliasToBean(TJobApplicationEntity.class));
 
         ret = query.list();
@@ -61,5 +61,10 @@ public class TJobApplicationDaoImpl extends BaseDao<TJobApplicationEntity> imple
     @Override
     public boolean deleteJobApplication(Long jobApplicationId) {
         return delete(get(jobApplicationId));
+    }
+
+    @Override
+    public TJobApplicationEntity getJobApplicationById(Long id) {
+        return get(id);
     }
 }

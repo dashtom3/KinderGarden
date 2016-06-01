@@ -20,25 +20,35 @@ public class TJobApplicationEntity {
     private Long fileId;
     private Long imgId;
 
-    private String file_src;
-    private String img_src;
+    private String fileSrc;
+    private String imgSrc;
+
+    private String birthDay;
 
     @Transient
-    public String getFile_src() {
-        return file_src;
+    public String getBirthDay() {
+        return birthDay;
     }
 
-    public void setFile_src(String file_src) {
-        this.file_src = file_src;
+    public void setBirthDay(String birthDay) {
+        this.birthDay = birthDay;
+    }
+    @Transient
+    public String getFileSrc() {
+        return fileSrc;
+    }
+
+    public void setFileSrc(String fileSrc) {
+        this.fileSrc = fileSrc;
     }
 
     @Transient
-    public String getImg_src() {
-        return img_src;
+    public String getImgSrc() {
+        return imgSrc;
     }
 
-    public void setImg_src(String img_src) {
-        this.img_src = img_src;
+    public void setImgSrc(String imgSrc) {
+        this.imgSrc = imgSrc;
     }
 
     @Id

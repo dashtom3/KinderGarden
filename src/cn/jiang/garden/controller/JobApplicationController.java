@@ -4,6 +4,7 @@ import cn.jiang.garden.model.TFileEntity;
 import cn.jiang.garden.model.TJobApplicationEntity;
 import cn.jiang.garden.service.FileService;
 import cn.jiang.garden.service.JobApplicationService;
+import cn.jiang.garden.utils.BaseUtil;
 import cn.jiang.garden.utils.DataWrapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -14,7 +15,7 @@ import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 @Controller
-@RequestMapping(value="api/")
+@RequestMapping(value="api/jobApplication")
 public class JobApplicationController {
     @Autowired
     FileService fileService;
@@ -22,29 +23,31 @@ public class JobApplicationController {
     @Autowired
     JobApplicationService jobApplicationService;
 
+    //投递简历  api/jobApplication/addJobApplication    POST
+    /*
+    name      String
+    sex       Integer   1 man   0 male
+    education String
+    address   String
+    tel       String
+    mail      String
+    birthDay  Date
+    photo     图片文件
+    resume    简历文件
+     */
     @RequestMapping(value="addJobApplication",method = RequestMethod.POST)
     @ResponseBody
     public DataWrapper<Void> addJobApplication(
             @ModelAttribute TJobApplicationEntity jobApplicationEntity,
-            @RequestParam(value = "photo", required = true) MultipartFile photo,
-            @RequestParam(value = "resume", required = true) MultipartFile resume,
-            @RequestParam(value = "token",required = false) String token,
+            @RequestParam(value = "photo", required = false) MultipartFile photo,
+            @RequestParam(value = "resume", required = false) MultipartFile resume,
             HttpServletRequest request
     ){
-        TFileEntity photoEntity = new TFileEntity();
-        TFileEntity resumeEntity = new TFileEntity();
-        photoEntity.setType(10);
-        photoEntity.setId(null);
-        resumeEntity.setType(9);
-        resumeEntity.setId(null);
-        fileService.uploadFile(request,token,photoEntity,photo);
-        fileService.uploadFile(request,token,resumeEntity,resume);
-        jobApplicationEntity.setImgId(photoEntity.getId() == null ? 11 : photoEntity.getId());
-        jobApplicationEntity.setFileId(resumeEntity.getId() == null ? 11 : resumeEntity.getId());
-        return  jobApplicationService.addJobApplication(token, jobApplicationEntity);
+        return  jobApplicationService.addJobApplication( jobApplicationEntity,photo,resume,request);
     }
 
-    @RequestMapping(value="getJobApplicationList",method = RequestMethod.POST)
+    //管理员查看简历  api/jobApplication/getJobApplicationList?token=    GET
+    @RequestMapping(value="getJobApplicationList",method = RequestMethod.GET)
     @ResponseBody
     public DataWrapper<List<TJobApplicationEntity>> getJobApplicationList(
             @RequestParam(value = "token",required = false) String token
@@ -52,13 +55,15 @@ public class JobApplicationController {
         return  jobApplicationService.getJobApplicationList(token);
     }
 
-    @RequestMapping(value="deleteJobApplicationList/{jobApplicationId}",method = RequestMethod.DELETE)
+    //管理员删除简历  api/jobApplication/deleteJobApplication/{jobApplicationId}?token=    DELETE
+    @RequestMapping(value="deleteJobApplication/{jobApplicationId}",method = RequestMethod.DELETE)
     @ResponseBody
     public DataWrapper<Void> deleteJobApplicationList(
             @PathVariable("jobApplicationId") Long jobApplicationId,
-            @RequestParam(value = "token",required = false) String token
+            @RequestParam(value = "token",required = false) String token,
+            HttpServletRequest request
     ){
-        return  jobApplicationService.deleteJobApplication(token,jobApplicationId);
+        return  jobApplicationService.deleteJobApplication(token,jobApplicationId,request);
     }
 
 }

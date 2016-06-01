@@ -12,4 +12,5 @@ public interface TJobApplicationDao {
     boolean addJobApplication(TJobApplicationEntity jobApplication);
     DataWrapper<List<TJobApplicationEntity>> getJobApplicationList();
     boolean deleteJobApplication(Long jobApplicationId);
+    TJobApplicationEntity getJobApplicationById(Long id);
 }

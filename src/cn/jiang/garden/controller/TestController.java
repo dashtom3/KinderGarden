@@ -29,7 +29,7 @@ public class TestController {
         fileEntity.setType(8);
         fileEntity.setId(null);
         fileEntity.setName("test");
-         fileService.uploadFile(request,"token",fileEntity,file);
+         fileService.uploadFile(request,null,fileEntity,file);
         System.out.println(fileEntity.getId());
         return null;
     }

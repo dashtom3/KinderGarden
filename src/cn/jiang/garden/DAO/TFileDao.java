@@ -11,5 +11,5 @@ public interface TFileDao {
     boolean deleteFile(Long fileId);
     boolean updateFile(TFileEntity file);
     DataWrapper<List<TFileEntity>> findByType(Integer type);
-
+    TFileEntity getFileById(Long id);
 }
