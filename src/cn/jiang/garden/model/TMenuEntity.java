@@ -1,6 +1,7 @@
 package cn.jiang.garden.model;
 
 import javax.persistence.*;
+import java.util.List;
 
 /**
  * Created by Administrator on 2016/5/29.
@@ -12,8 +13,19 @@ public class TMenuEntity {
     private String name;
     private Integer type;
     private Long imgId;
+    @OneToOne
     private TFileEntity image;
+    private List<TFileEntity> images;
     @Transient
+    public List<TFileEntity> getImages() {
+        return images;
+    }
+
+    public void setImages(List<TFileEntity> images) {
+        this.images = images;
+    }
+
+
     public TFileEntity getImage() {
         return image;
     }

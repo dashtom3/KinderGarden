@@ -24,7 +24,7 @@ public class TNewsServiceImpl implements TNewsService {
     TTokenDao tokenDao;
 
     @Override
-    public DataWrapper<Void> addNews(TNewsEntity tnews, MultipartFile[] files,String tokenString){
+    public DataWrapper<Void> addNews(TNewsEntity tnews,String tokenString){
         boolean result = tNewsDao.addTNews(tnews);
         DataWrapper<Void> data = new DataWrapper<Void>();
         if(result == true){
@@ -34,7 +34,7 @@ public class TNewsServiceImpl implements TNewsService {
         return data;
     }
     @Override
-    public DataWrapper<Void> updateNews(TNewsEntity tnews,MultipartFile[] files,String tokenString){
+    public DataWrapper<Void> updateNews(TNewsEntity tnews,String tokenString){
         boolean result = tNewsDao.updateTNews(tnews);
         DataWrapper<Void> data = new DataWrapper<Void>();
         if(result == true){
@@ -55,6 +55,11 @@ public class TNewsServiceImpl implements TNewsService {
     }
     @Override
     public DataWrapper<List<TNewsEntity>> getNewsList(String tokenString){
-        return tNewsDao.getTNewsList();
+        return tNewsDao.getTNewsList(1);
+    }
+
+    @Override
+    public DataWrapper<TNewsEntity> getHomeData(String tokenString) {
+        return tNewsDao.getTNews(0);
     }
 }
