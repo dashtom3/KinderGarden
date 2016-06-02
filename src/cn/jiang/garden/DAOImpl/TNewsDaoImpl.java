@@ -38,7 +38,7 @@ public class TNewsDaoImpl extends BaseDao<TNewsEntity> implements TNewsDao {
         List<TNewsEntity> ret = new ArrayList<TNewsEntity>();
         Session session = getSession();
         Criteria criteria = session.createCriteria(TNewsEntity.class);
-
+        criteria.add(Restrictions.eq("type",type));
         criteria.addOrder(Order.desc("publishDate"));
         try {
             ret = criteria.list();
@@ -49,7 +49,37 @@ public class TNewsDaoImpl extends BaseDao<TNewsEntity> implements TNewsDao {
         return retDataWrapper;
 
     }
+    @Override
+    public DataWrapper<TNewsEntity> getTNews(Long tNewsId){
+        DataWrapper<TNewsEntity> retDataWrapper = new DataWrapper<TNewsEntity>();
+        List<Object[]> list = null;
+        TNewsEntity ret = new TNewsEntity();
 
+        String sql = "select {n.*},{c.*} "
+                + "from t_news n,t_file c "
+                + "where n.type = 1 and (n.img_id1 = c.id or n.img_id2 = c.id or n.img_id3 = c.id) and n.id = "+tNewsId+" ";
+        sql += " order by n.type asc";
+        Session session = getSession();
+        Query query = session.createSQLQuery(sql)
+                .addEntity("n",TNewsEntity.class)
+                .addEntity("c",TFileEntity.class);
+        try {
+            list = query.list();
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        //添加新闻和横幅图片
+        if(list != null){
+            ret = (TNewsEntity) list.get(0)[0];
+            List<TFileEntity> pic = new ArrayList<TFileEntity>();
+            for(int i =0;i<list.size();i++){
+                pic.add((TFileEntity) list.get(i)[1]);
+            }
+            ret.setNewsPic(pic);
+        }
+        retDataWrapper.setData(ret);
+        return retDataWrapper;
+    }
     @Override
     public DataWrapper<TNewsEntity> getHomeData() {
         DataWrapper<TNewsEntity> retDataWrapper = new DataWrapper<TNewsEntity>();

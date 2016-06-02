@@ -36,19 +36,21 @@ public class HomeController {
     @ResponseBody
     public DataWrapper<Void> updateHomeHeader(
             @RequestParam MultipartFile[] files,
+            @ModelAttribute TNewsEntity tNewsEntity,
             @RequestParam(value = "token",required = false) String token,
             HttpServletRequest request) throws IOException {
-        TNewsEntity tNewsEntity = tNewsService.getHomeData(token).getData();
-        for(int i=0;i<files.length;i++){
-            TFileEntity file = new TFileEntity();
-            file.setType(8);
-            fileService.uploadFile(request,token,file,files[i]);
-            if(i == 0){
-                tNewsEntity.setImgId1(file.getId());
-            }else if(i == 1){
-                tNewsEntity.setImgId2(file.getId());
-            }else{
-                tNewsEntity.setImgId3(file.getId());
+        if(files != null) {
+            for (int i = 0; i < files.length; i++) {
+                TFileEntity file = new TFileEntity();
+                file.setType(8);
+                fileService.uploadFile(request, token, file, files[i]);
+                if (i == 0) {
+                    tNewsEntity.setImgId1(file.getId());
+                } else if (i == 1) {
+                    tNewsEntity.setImgId2(file.getId());
+                } else {
+                    tNewsEntity.setImgId3(file.getId());
+                }
             }
         }
         return tNewsService.updateNews(tNewsEntity,token);
@@ -63,8 +65,7 @@ public class HomeController {
             HttpServletRequest request) throws IOException {
         if(tFileEntity.getType() != null) {
             if (tFileEntity.getType() <= 6) {
-                fileService.uploadFile(request, token, tFileEntity, file);
-                return new DataWrapper<Void>();
+                return fileService.updateFile(request, token, tFileEntity, file);
             }
         }
         DataWrapper<Void> ret = new DataWrapper<Void>();

@@ -15,5 +15,6 @@ public interface TNewsService {
     DataWrapper<Void> updateNews(TNewsEntity tnews,String tokenString);
     DataWrapper<Void> deleteNews(Long tnewsId,String tokenString);
     DataWrapper<List<TNewsEntity>> getNewsList(String tokenString);
+    DataWrapper<TNewsEntity> getNewsById(Long newsId,String tokenString);
     DataWrapper<TNewsEntity> getHomeData(String tokenString);
 }
