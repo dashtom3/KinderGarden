@@ -13,23 +13,13 @@ public class TMenuEntity {
     private String name;
     private Integer type;
     private Long imgId;
-    @OneToOne
+
     private TFileEntity image;
-    private List<TFileEntity> images;
+
     @Transient
-    public List<TFileEntity> getImages() {
-        return images;
-    }
-
-    public void setImages(List<TFileEntity> images) {
-        this.images = images;
-    }
-
-
     public TFileEntity getImage() {
         return image;
     }
-
     public void setImage(TFileEntity image) {
         this.image = image;
     }

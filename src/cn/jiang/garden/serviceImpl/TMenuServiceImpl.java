@@ -39,7 +39,7 @@ public class TMenuServiceImpl implements TMenuService{
     }
 
     @Override
-    public DataWrapper<Void> addMenuItem(TFileEntity tFile, String tokenString) {
+    public DataWrapper<Void> addMenuItem(TFileEntity tFile  , String tokenString) {
         // TODO: 16/5/31  图片存储
         boolean result = tFileDao.addFile(tFile);
         DataWrapper<Void> data = new DataWrapper<Void>();

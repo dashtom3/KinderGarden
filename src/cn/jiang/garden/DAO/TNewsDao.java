@@ -13,5 +13,5 @@ public interface TNewsDao {
     boolean deleteTNews(Long tnewsId);
     boolean updateTNews(TNewsEntity tnews);
     DataWrapper<List<TNewsEntity>> getTNewsList(int type);
-    DataWrapper<TNewsEntity> getTNews(int type);
+    DataWrapper<TNewsEntity> getHomeData();
 }

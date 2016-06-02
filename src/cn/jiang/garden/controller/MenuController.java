@@ -33,7 +33,7 @@ public class MenuController {
             @RequestParam(value = "token",required = false) String token){
         return tMenuService.updateMenu(tMenu,token);
     }
-    //得到菜单列表 api/menu/getMenuList?token = x
+    //得到菜单列表 api/menu/getMenuList?token = x 已测
     @RequestMapping(value="getMenuList",params = "token")
     @ResponseBody
     public DataWrapper<List<TMenuEntity>> getMenuList(

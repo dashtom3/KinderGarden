@@ -1,5 +1,6 @@
 package cn.jiang.garden.serviceImpl;
 
+import cn.jiang.garden.DAO.TFileDao;
 import cn.jiang.garden.DAO.TNewsDao;
 import cn.jiang.garden.DAO.TTokenDao;
 import cn.jiang.garden.enums.ErrorCodeEnum;
@@ -22,6 +23,9 @@ public class TNewsServiceImpl implements TNewsService {
 
     @Autowired
     TTokenDao tokenDao;
+
+    @Autowired
+    TFileDao tFileDao;
 
     @Override
     public DataWrapper<Void> addNews(TNewsEntity tnews,String tokenString){
@@ -60,6 +64,11 @@ public class TNewsServiceImpl implements TNewsService {
 
     @Override
     public DataWrapper<TNewsEntity> getHomeData(String tokenString) {
-        return tNewsDao.getTNews(0);
+        TNewsEntity result = tNewsDao.getHomeData().getData();
+        //添加主页图片
+        result.setHomePic(tFileDao.findByType(6).getData());
+        DataWrapper<TNewsEntity> ret = new DataWrapper<TNewsEntity>();
+        ret.setData(result);
+        return ret;
     }
 }
