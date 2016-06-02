@@ -20,7 +20,7 @@ public class TRecruitDaoImpl extends BaseDao<TRecruitEntity> implements TRecruit
 
     @Override
     public boolean addTRecruit(TRecruitEntity tRecruit) {
-        return addTRecruit(tRecruit);
+        return save(tRecruit);
     }
 
     @Override

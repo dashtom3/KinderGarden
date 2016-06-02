@@ -17,7 +17,7 @@ import java.util.List;
 public class RecruitController {
     @Autowired
     TRecruitService tRecruitService;
-    //发布招聘 api/recruit/addRecruit  state 1发布0不发布
+    //发布招聘 api/recruit/addRecruit  state 1发布0不发布 已测，注意日期
     @RequestMapping(value="addRecruit",method = RequestMethod.POST)
     @ResponseBody
     public DataWrapper<Void> addRecruit(
@@ -26,7 +26,7 @@ public class RecruitController {
     ){
         return tRecruitService.addTRecruit(tRecruitEntity,token);
     }
-    //更新招聘 api/recruit/updateRecruit
+    //更新招聘 api/recruit/updateRecruit 已测
     @RequestMapping(value="updateRecruit",method = RequestMethod.POST)
     @ResponseBody
     public DataWrapper<Void> updateRecruit(
@@ -36,7 +36,7 @@ public class RecruitController {
     ){
         return tRecruitService.updateTRecruit(tRecruitEntity,token);
     }
-    //删除招聘 api/recruit/deleteRecruit/{recruitId}?token=x
+    //删除招聘 api/recruit/deleteRecruit/{recruitId}?token=x 已测
     @RequestMapping(value="deleteRecruit/{recruitId}",params = "token")
     @ResponseBody
     public DataWrapper<Void> deleteNews(
@@ -45,7 +45,7 @@ public class RecruitController {
     ){
         return tRecruitService.deleteTRecruit(recruitId,token);
     }
-    //招聘列表 api/recruit/getRecruitList?token=x  包含所有状态
+    //招聘列表 api/recruit/getRecruitList?token=x  包含所有状态 已测
     @RequestMapping(value="getRecruitList",params = "token")
     @ResponseBody
     public DataWrapper<List<TRecruitEntity>> getNewsList(

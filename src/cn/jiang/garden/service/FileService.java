@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
  * Created by Administrator on 2016/5/31.
  */
 public interface FileService {
-    DataWrapper<TFileEntity> uploadFile(HttpServletRequest request,String token,TFileEntity fileEntity,MultipartFile file);
-    void deleteFile(Long id,HttpServletRequest request);
+    DataWrapper<Void> uploadFile(HttpServletRequest request,String token,TFileEntity fileEntity,MultipartFile file);
+    DataWrapper<Void> deleteFile(Long id,HttpServletRequest request);
+    DataWrapper<Void> updateFile(TFileEntity fileEntity,MultipartFile file,HttpServletRequest request);
 }

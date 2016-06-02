@@ -58,4 +58,20 @@ public class UserServiceImpl implements UserService {
 
         return retDataWrapper;
     }
+
+    @Override
+    public boolean checkUser(String token) {
+        TUserEntity user = userDao.getUserByToken(token);
+        if(user != null) {
+            return true;
+        } else return false;
+    }
+
+    @Override
+    public boolean checkAdmin(String token) {
+        TUserEntity user = userDao.getUserByToken(token);
+        if(user != null && user.getType() == 0) {
+            return true;
+        } else return false;
+    }
 }
