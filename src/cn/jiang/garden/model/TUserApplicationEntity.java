@@ -1,14 +1,18 @@
 package cn.jiang.garden.model;
 
-import javax.persistence.*;
+import javax.persistence.Basic;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 
 /**
- * Created by Administrator on 2016/5/29.
+ * Created by Administrator on 2016/6/2.
  */
 @Entity
-@Table(name = "t_user_application")
+@javax.persistence.Table(name = "t_user_application")
 public class TUserApplicationEntity {
     private Long id;
+    private Integer state;
     private String record;
     private String firstRelation;
     private String firstCellPhone;
@@ -24,17 +28,27 @@ public class TUserApplicationEntity {
 
     @Id
     @GeneratedValue
-    @Column(name = "id")
+    @javax.persistence.Column(name = "id")
     public Long getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(long id) {
         this.id = id;
     }
 
     @Basic
-    @Column(name = "record")
+    @javax.persistence.Column(name = "state")
+    public Integer getState() {
+        return state;
+    }
+
+    public void setState(Integer state) {
+        this.state = state;
+    }
+
+    @Basic
+    @javax.persistence.Column(name = "record")
     public String getRecord() {
         return record;
     }
@@ -44,7 +58,7 @@ public class TUserApplicationEntity {
     }
 
     @Basic
-    @Column(name = "first_relation")
+    @javax.persistence.Column(name = "first_relation")
     public String getFirstRelation() {
         return firstRelation;
     }
@@ -54,7 +68,7 @@ public class TUserApplicationEntity {
     }
 
     @Basic
-    @Column(name = "first_cell_phone")
+    @javax.persistence.Column(name = "first_cell_phone")
     public String getFirstCellPhone() {
         return firstCellPhone;
     }
@@ -64,7 +78,7 @@ public class TUserApplicationEntity {
     }
 
     @Basic
-    @Column(name = "first_work_phone")
+    @javax.persistence.Column(name = "first_work_phone")
     public String getFirstWorkPhone() {
         return firstWorkPhone;
     }
@@ -74,7 +88,7 @@ public class TUserApplicationEntity {
     }
 
     @Basic
-    @Column(name = "first_family_phone")
+    @javax.persistence.Column(name = "first_family_phone")
     public String getFirstFamilyPhone() {
         return firstFamilyPhone;
     }
@@ -83,8 +97,9 @@ public class TUserApplicationEntity {
         this.firstFamilyPhone = firstFamilyPhone;
     }
 
+
     @Basic
-    @Column(name = "second_relation")
+    @javax.persistence.Column(name = "second_relation")
     public String getSecondRelation() {
         return secondRelation;
     }
@@ -93,8 +108,9 @@ public class TUserApplicationEntity {
         this.secondRelation = secondRelation;
     }
 
+
     @Basic
-    @Column(name = "second_cell_phone")
+    @javax.persistence.Column(name = "second_cell_phone")
     public String getSecondCellPhone() {
         return secondCellPhone;
     }
@@ -103,8 +119,9 @@ public class TUserApplicationEntity {
         this.secondCellPhone = secondCellPhone;
     }
 
+
     @Basic
-    @Column(name = "second_work_phone")
+    @javax.persistence.Column(name = "second_work_phone")
     public String getSecondWorkPhone() {
         return secondWorkPhone;
     }
@@ -113,8 +130,9 @@ public class TUserApplicationEntity {
         this.secondWorkPhone = secondWorkPhone;
     }
 
+
     @Basic
-    @Column(name = "second_family_phone")
+    @javax.persistence.Column(name = "second_family_phone")
     public String getSecondFamilyPhone() {
         return secondFamilyPhone;
     }
@@ -123,8 +141,9 @@ public class TUserApplicationEntity {
         this.secondFamilyPhone = secondFamilyPhone;
     }
 
+
     @Basic
-    @Column(name = "insurance_company")
+    @javax.persistence.Column(name = "insurance_company")
     public String getInsuranceCompany() {
         return insuranceCompany;
     }
@@ -133,8 +152,9 @@ public class TUserApplicationEntity {
         this.insuranceCompany = insuranceCompany;
     }
 
+
     @Basic
-    @Column(name = "insurance_number")
+    @javax.persistence.Column(name = "insurance_number")
     public String getInsuranceNumber() {
         return insuranceNumber;
     }
@@ -143,8 +163,9 @@ public class TUserApplicationEntity {
         this.insuranceNumber = insuranceNumber;
     }
 
+
     @Basic
-    @Column(name = "insurance_project")
+    @javax.persistence.Column(name = "insurance_project")
     public String getInsuranceProject() {
         return insuranceProject;
     }
@@ -184,6 +205,7 @@ public class TUserApplicationEntity {
             return false;
         if (secondWorkPhone != null ? !secondWorkPhone.equals(that.secondWorkPhone) : that.secondWorkPhone != null)
             return false;
+        if (state != null ? !state.equals(that.state) : that.state != null) return false;
 
         return true;
     }
@@ -191,6 +213,7 @@ public class TUserApplicationEntity {
     @Override
     public int hashCode() {
         int result = (int) (id ^ (id >>> 32));
+        result = 31 * result + (state != null ? state.hashCode() : 0);
         result = 31 * result + (record != null ? record.hashCode() : 0);
         result = 31 * result + (firstRelation != null ? firstRelation.hashCode() : 0);
         result = 31 * result + (firstCellPhone != null ? firstCellPhone.hashCode() : 0);

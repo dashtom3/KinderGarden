@@ -60,6 +60,27 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    public DataWrapper<Void> register(TUserEntity userEntity, String token) {
+        DataWrapper<Void> retDataWrapper = new DataWrapper<Void>();
+        TUserEntity user = userDao.getUserByToken(token);
+        if(user != null && user.getType() == 0) {
+            if(userEntity != null && userEntity.getUserName() != null && userEntity.getPassword() != null
+                    && userEntity.getApplicationId() != null) {
+                userEntity.setId(null);
+                userEntity.setRegisterDate(new java.sql.Date(System.currentTimeMillis()));
+                userEntity.setType(1);
+                if(userDao.addUser(userEntity))
+                    retDataWrapper.setErrorCode(ErrorCodeEnum.No_Error);
+                else retDataWrapper.setErrorCode(ErrorCodeEnum.Error);
+
+            } else retDataWrapper.setErrorCode(ErrorCodeEnum.Error);
+
+        } else retDataWrapper.setErrorCode(ErrorCodeEnum.Error);
+
+        return retDataWrapper;
+    }
+
+    @Override
     public boolean checkUser(String token) {
         TUserEntity user = userDao.getUserByToken(token);
         if(user != null) {

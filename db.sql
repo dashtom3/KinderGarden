@@ -61,6 +61,7 @@ type int
 
 create table t_user_application(
 id serial primary key,
+state int,-- 0所有,1未处理，2已处理
 record text,
 first_relation varchar(30),
 first_cell_phone varchar(30),
@@ -97,3 +98,8 @@ insert into t_file(id,name,type,intro,img_src) values(6,'test6',6,'test','src');
 insert into t_news(name,intro,publish_date ,type ,img_id1 ,img_id2 ,img_id3 ) values('主页','主页','2016-06-01',0,15,15,15);
 
 insert into t_news(name,intro,publish_date ,type ,img_id1 ,img_id2 ,img_id3 ) values('主页','主页','2016-06-01',1,15,15,15);
+
+
+select {n.*},{f1.*},{f2.*),{f3.*} 
+  from (select * from t_news where type = 0) n
+  
