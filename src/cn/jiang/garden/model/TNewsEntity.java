@@ -22,6 +22,16 @@ public class TNewsEntity {
 
     private List<TFileEntity> homeBanner;
     private List<TFileEntity> homePic;
+    private List<TFileEntity> newsPic;
+
+    @Transient
+    public List<TFileEntity> getNewsPic() {
+        return newsPic;
+    }
+
+    public void setNewsPic(List<TFileEntity> newsPic) {
+        this.newsPic = newsPic;
+    }
 
     @Transient
     public List<TFileEntity> getHomePic() {

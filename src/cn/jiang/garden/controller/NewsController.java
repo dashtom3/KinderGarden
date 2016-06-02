@@ -73,16 +73,30 @@ public class NewsController {
     @ResponseBody
     public DataWrapper<Void> deleteNews(
             @PathVariable("newsId") Long tnewsId,
-            @RequestParam(value = "token",required = false) String token
-    ){
-        return tNewsService.deleteNews(tnewsId,token);
+            @RequestParam(value = "token",required = false) String token,
+            HttpServletRequest request) throws IOException {
+        TNewsEntity tNewsEntity = tNewsService.getNewsById(tnewsId,token).getData();
+        DataWrapper<Void> result = tNewsService.deleteNews(tnewsId,token);
+        fileService.deleteFile(tNewsEntity.getImgId1(),token,request);
+        fileService.deleteFile(tNewsEntity.getImgId2(),token,request);
+        fileService.deleteFile(tNewsEntity.getImgId3(),token,request);
+        return result;
     }
-    //新闻列表 api/news/getNewsList?token=x
+    //新闻列表 api/news/getNewsList?token=x  已测
     @RequestMapping(value="getNewsList",params = "token")
     @ResponseBody
     public DataWrapper<List<TNewsEntity>> getNewsList(
             @RequestParam(value = "token",required = false) String token
     ){
         return tNewsService.getNewsList(token);
+    }
+    //得到单个新闻信息 api/news/getNewsById/{newsId}?token=x  已测
+    @RequestMapping(value="getNewsById/{newsId}",params = "token")
+    @ResponseBody
+    public DataWrapper<TNewsEntity> getNewsById(
+            @PathVariable("newsId") Long newsId,
+            @RequestParam(value = "token",required = false) String token
+    ){
+        return tNewsService.getNewsById(newsId,token);
     }
 }

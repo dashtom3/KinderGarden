@@ -57,10 +57,17 @@ public class TNewsServiceImpl implements TNewsService {
         data.setErrorCode(ErrorCodeEnum.Error);
         return data;
     }
+
     @Override
     public DataWrapper<List<TNewsEntity>> getNewsList(String tokenString){
         return tNewsDao.getTNewsList(1);
     }
+
+    @Override
+    public DataWrapper<TNewsEntity> getNewsById(Long newsId, String tokenString) {
+        return tNewsDao.getTNews(newsId);
+    }
+
 
     @Override
     public DataWrapper<TNewsEntity> getHomeData(String tokenString) {

@@ -22,7 +22,12 @@ public class TFileDaoImpl extends BaseDao<TFileEntity> implements TFileDao {
 
     @Override
     public boolean deleteFile(Long fileId) {
-        return delete(get(fileId));
+        try {
+            return delete(get(fileId));
+        }catch (Exception e){
+
+        }
+        return  false;
     }
 
     @Override

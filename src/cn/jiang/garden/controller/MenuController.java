@@ -1,10 +1,12 @@
 package cn.jiang.garden.controller;
 
+import cn.jiang.garden.enums.ErrorCodeEnum;
 import cn.jiang.garden.model.TFileEntity;
 import cn.jiang.garden.model.TMenuEntity;
 import cn.jiang.garden.service.FileService;
 import cn.jiang.garden.service.TMenuService;
 import cn.jiang.garden.utils.DataWrapper;
+import org.apache.log4j.spi.ErrorCode;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -49,8 +51,8 @@ public class MenuController {
             @RequestParam(value = "token",required = false) String token,
             HttpServletRequest request) throws IOException {
         tFile.setType(7);
-        fileService.uploadFile(request,token,tFile,file);
-        return tMenuService.addMenuItem(tFile,token);
+        return fileService.uploadFile(request,token,tFile,file);
+
     }
     //更新菜品 api/menu/updateMenuItem
     @RequestMapping(value="updateMenuItem",method= RequestMethod.POST)
@@ -61,18 +63,18 @@ public class MenuController {
             @RequestParam(value = "token",required = false) String token,
             HttpServletRequest request) throws IOException {
         tFile.setType(7);
-        fileService.uploadFile(request,token,tFile,file);
-        return tMenuService.updateMenuItem(tFile,token);
+        return fileService.updateFile(request,token,tFile,file);
     }
     //删除菜品 api/menu/deleteMenuItem/{itemId}?token=x
     @RequestMapping(value="deleteMenuItem/{itemId}",params = "token")
     @ResponseBody
     public DataWrapper<Void> deleteMenuItem(
             @PathVariable("itemId") Long itemId,
-            @RequestParam(value = "token",required = false) String token){
-        return tMenuService.deleteMenuItem(itemId,token);
+            @RequestParam(value = "token",required = false) String token,
+            HttpServletRequest request) throws IOException {
+        return fileService.deleteFile(itemId,token,request);
     }
-    //得到菜品列表 api/menu/getMenuItemList?token = x (type = 1~7:周一~周日 name:星期几 image:菜品的名字简介在json image类中)
+    //得到菜品列表 api/menu/getMenuItemList?token = x (type = 1~7:周一~周日 name:星期几 image:菜品的名字简介在json image类中) 已测
     @RequestMapping(value="getMenuItemList",params = "token")
     @ResponseBody
     public DataWrapper<List<TFileEntity>> getMenuItemList(
