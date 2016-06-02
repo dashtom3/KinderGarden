@@ -37,7 +37,11 @@ public class TFileDaoImpl extends BaseDao<TFileEntity> implements TFileDao {
         Session session = getSession();
         Criteria criteria = session.createCriteria(TFileEntity.class);
         if(type != null) {
-            criteria.add(Restrictions.eq("type", type));
+            if(type<=6) {
+                criteria.add(Restrictions.le("type", 6));
+            }else{
+                criteria.add(Restrictions.eq("type", type));
+            }
         }
         try {
             ret = criteria.list();

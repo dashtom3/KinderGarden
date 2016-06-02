@@ -3,6 +3,7 @@ package cn.jiang.garden.model;
 import javax.persistence.*;
 import java.sql.Date;
 import java.util.List;
+import java.util.Set;
 
 /**
  * Created by Administrator on 2016/5/29.
@@ -18,15 +19,27 @@ public class TNewsEntity {
     private Long imgId1;
     private Long imgId2;
     private Long imgId3;
-    private List<TFileEntity> homeList;
+
+    private List<TFileEntity> homeBanner;
+    private List<TFileEntity> homePic;
 
     @Transient
-    public List<TFileEntity> getHomeList() {
-        return homeList;
+    public List<TFileEntity> getHomePic() {
+        return homePic;
     }
-    public void setHomeList(List<TFileEntity> homeList) {
-        this.homeList = homeList;
+    public void setHomePic(List<TFileEntity> homePic) {
+        this.homePic = homePic;
     }
+
+    @Transient
+    public List<TFileEntity> getHomeBanner() {
+        return homeBanner;
+    }
+
+    public void setHomeBanner(List<TFileEntity> homeBanner) {
+        this.homeBanner = homeBanner;
+    }
+
 
     @Id
     @GeneratedValue

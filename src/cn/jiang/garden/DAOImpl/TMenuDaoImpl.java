@@ -11,6 +11,7 @@ import org.hibernate.transform.Transformers;
 import org.hibernate.type.StandardBasicTypes;
 import org.springframework.stereotype.Repository;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.prefs.BackingStoreException;
 
@@ -29,8 +30,9 @@ public class TMenuDaoImpl extends BaseDao<TMenuEntity> implements TMenuDao{
     @Override
     public DataWrapper<List<TMenuEntity>> getTMenuList() {
         DataWrapper<List<TMenuEntity>> retDataWrapper = new DataWrapper<List<TMenuEntity>>();
-        List<TMenuEntity> ret;
-        ret = null;
+        List<Object[]> list = null;
+        List<TMenuEntity> ret = new ArrayList<TMenuEntity>();
+
         String sql = "select {n.*},{c.*} "
                 + "from t_menu n,t_file c "
                 + "where c.id = n.img_id ";
@@ -39,12 +41,16 @@ public class TMenuDaoImpl extends BaseDao<TMenuEntity> implements TMenuDao{
         Session session = getSession();
         Query query = session.createSQLQuery(sql)
                 .addEntity("n",TMenuEntity.class)
-                .addJoin("c", "n.image");
+                .addEntity("c", TFileEntity.class);
         try {
-            ret = query.list();
-
+            list = query.list();
         }catch (Exception e){
             e.printStackTrace();
+        }
+        for(int i=0;i<list.size();i++){
+            TMenuEntity temp =(TMenuEntity)list.get(i)[0];
+            temp.setImage((TFileEntity)list.get(i)[1]);
+            ret.add(temp);
         }
         retDataWrapper.setData(ret);
         return retDataWrapper;

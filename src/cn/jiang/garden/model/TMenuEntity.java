@@ -14,22 +14,13 @@ public class TMenuEntity {
     private Integer type;
     private Long imgId;
 
-    private TFileEntity image;
-    private List<TFileEntity> images;
-    @Transient
-    public List<TFileEntity> getImages() {
-        return images;
-    }
 
-    public void setImages(List<TFileEntity> images) {
-        this.images = images;
-    }
+    private TFileEntity image;
 
     @Transient
     public TFileEntity getImage() {
         return image;
     }
-
     public void setImage(TFileEntity image) {
         this.image = image;
     }
