@@ -68,7 +68,7 @@ public class FileServiceImpl implements FileService {
     }
 
     @Override
-    public DataWrapper<Void> deleteFile(Long id,HttpServletRequest request) {
+    public DataWrapper<Void> deleteFile(Long id,String token,HttpServletRequest request) {
         DataWrapper<Void> retDataWrapper = new DataWrapper<Void>();
         TFileEntity fileEntity = fileDao.getFileById(id);
         if(fileEntity.getType() == 11) return retDataWrapper;//文件type为11的被认为是空文件
@@ -82,7 +82,7 @@ public class FileServiceImpl implements FileService {
     }
 
     @Override
-    public DataWrapper<Void> updateFile(TFileEntity fileEntity, MultipartFile file,HttpServletRequest request) {
+    public DataWrapper<Void> updateFile(HttpServletRequest request,String token,TFileEntity fileEntity, MultipartFile file) {
         DataWrapper<Void> retDataWrapper = new DataWrapper<Void>();
         if(fileEntity.getType() == 11) return retDataWrapper;//文件type为11的被认为是空文件
         String fileToDelete = request.getSession().getServletContext().getRealPath("/") + fileEntity.getImgSrc();

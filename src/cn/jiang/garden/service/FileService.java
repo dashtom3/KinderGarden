@@ -11,6 +11,6 @@ import javax.servlet.http.HttpServletRequest;
  */
 public interface FileService {
     DataWrapper<Void> uploadFile(HttpServletRequest request,String token,TFileEntity fileEntity,MultipartFile file);
-    DataWrapper<Void> deleteFile(Long id,HttpServletRequest request);
-    DataWrapper<Void> updateFile(TFileEntity fileEntity,MultipartFile file,HttpServletRequest request);
+    DataWrapper<Void> deleteFile(Long id,String token,HttpServletRequest request);
+    DataWrapper<Void> updateFile(HttpServletRequest request,String token,TFileEntity fileEntity,MultipartFile file);
 }

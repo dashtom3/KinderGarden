@@ -73,8 +73,8 @@ public class JobApplicationServiceImpl implements JobApplicationService {
             TJobApplicationEntity jobApplicationEntity = jobApplicationDao.getJobApplicationById(jobApplicationId);
             if(jobApplicationEntity != null) {
                 jobApplicationDao.deleteJobApplication(jobApplicationId);
-                fileService.deleteFile(jobApplicationEntity.getFileId(),request);
-                fileService.deleteFile(jobApplicationEntity.getImgId(),request);
+                fileService.deleteFile(jobApplicationEntity.getFileId(),null,request);
+                fileService.deleteFile(jobApplicationEntity.getImgId(),null,request);
 
             }
         } else{
