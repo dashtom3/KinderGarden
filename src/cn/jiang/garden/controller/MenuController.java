@@ -27,21 +27,37 @@ public class MenuController {
     TMenuService tMenuService;
     @Autowired
     FileService fileService;
-    //更新菜单 api/menu/updateMenu 只传图片id
-    @RequestMapping(value="updateMenu",method= RequestMethod.POST)
-    @ResponseBody
-    public DataWrapper<Void> updateMenu(
-            @ModelAttribute TMenuEntity tMenu,
-            @RequestParam(value = "token",required = false) String token){
-        return tMenuService.updateMenu(tMenu,token);
-    }
+
     //得到菜单列表 api/menu/getMenuList?token = x 已测
     @RequestMapping(value="getMenuList",params = "token")
     @ResponseBody
     public DataWrapper<List<TMenuEntity>> getMenuList(
+            @RequestParam(value = "type",required = false) Integer type,
+            @RequestParam(value = "timeType",required = false) Integer timeType,
             @RequestParam(value = "token",required = false) String token){
-        return tMenuService.getMenuList(token);
+        return tMenuService.getMenuList(type,timeType,token);
     }
+    //删除菜单 api/menu/deleteMenuList?token = x & menuId = x 已测
+    @RequestMapping(value="deleteMenu",params = "token")
+    @ResponseBody
+    public DataWrapper<Void> deleteMenuList(
+            @RequestParam(value = "menuId",required = false) Long menuId,
+            @RequestParam(value = "token",required = false) String token){
+        return tMenuService.deleteMenu(menuId,token);
+    }
+
+    //增加菜单 api/menu/addMenuList?token = x 已测
+    @RequestMapping(value="addMenu",params = "token")
+    @ResponseBody
+    public DataWrapper<Void> addMenu(
+            @ModelAttribute TMenuEntity menuEntity,
+            @RequestParam(value = "token",required = false) String token){
+        return tMenuService.addMenu(menuEntity,token);
+    }
+
+
+
+
     //添加菜品 api/menu/addMenuItem
     @RequestMapping(value="addMenuItem",method= RequestMethod.POST)
     @ResponseBody

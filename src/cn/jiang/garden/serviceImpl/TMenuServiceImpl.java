@@ -62,8 +62,8 @@ public class TMenuServiceImpl implements TMenuService{
 //    }
 
     @Override
-    public DataWrapper<List<TMenuEntity>> getMenuList(String tokenString){
-        return tMenuDao.getTMenuList();
+    public DataWrapper<List<TMenuEntity>> getMenuList(Integer type,Integer timeType,String tokenString){
+        return tMenuDao.getTMenuListByType(type,timeType);
     }
 
 //    @Override
@@ -79,5 +79,32 @@ public class TMenuServiceImpl implements TMenuService{
     @Override
     public DataWrapper<List<TFileEntity>> getMenuItemList(String tokenString){
         return tFileDao.findByType(7);
+    }
+
+    @Override
+    public DataWrapper<Void> deleteMenu(Long menuId, String tokenString) {
+        boolean result = tMenuDao.deleteTMenu(menuId);
+        DataWrapper<Void> data = new DataWrapper<Void>();
+        if(result == true){
+            return data;
+        }
+        data.setErrorCode(ErrorCodeEnum.Error);
+        return data;
+    }
+
+    @Override
+    public DataWrapper<Void> addMenu(TMenuEntity menuEntity, String tokenString) {
+        TMenuEntity existedMenu = tMenuDao.getByTypeAndImgId(menuEntity.getType(),menuEntity.getTimeType(),menuEntity.getImgId());
+        DataWrapper<Void> data = new DataWrapper<Void>();
+        if(existedMenu == null) {
+            menuEntity.setId(null);
+            boolean result = tMenuDao.addTMenu(menuEntity);
+            if(!result) {
+                data.setErrorCode(ErrorCodeEnum.Error.Error);
+            }
+        } else {
+            data.setErrorCode(ErrorCodeEnum.Error.Error);
+        }
+        return  data;
     }
 }

@@ -16,6 +16,8 @@ public interface TMenuService {
 //    DataWrapper<Void> addMenuItem(TFileEntity tFile, String tokenString);
 //    DataWrapper<Void> updateMenuItem(TFileEntity tFile, String tokenString);
 //    DataWrapper<Void> deleteMenuItem(Long itemId, String tokenString);
-    DataWrapper<List<TMenuEntity>> getMenuList(String tokenString);
+    DataWrapper<List<TMenuEntity>> getMenuList(Integer type,Integer timeType,String tokenString);
     DataWrapper<List<TFileEntity>> getMenuItemList(String tokenString);
+    DataWrapper<Void> deleteMenu(Long menuId,String tokenString);
+    DataWrapper<Void> addMenu(TMenuEntity menuEntity,String tokenString);
 }

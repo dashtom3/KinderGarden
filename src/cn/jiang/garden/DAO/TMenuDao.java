@@ -10,5 +10,8 @@ import java.util.List;
  */
 public interface TMenuDao {
     boolean updateTMenu(TMenuEntity tMenu);
-    DataWrapper<List<TMenuEntity>> getTMenuList();
+    DataWrapper<List<TMenuEntity>> getTMenuListByType(Integer type,Integer timeType);
+    boolean deleteTMenu(Long id);
+    boolean addTMenu(TMenuEntity tMenu);
+    TMenuEntity getByTypeAndImgId(Integer type,Integer timeType,Long imgId);
 }
