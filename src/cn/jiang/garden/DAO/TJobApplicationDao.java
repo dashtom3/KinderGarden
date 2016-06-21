@@ -10,7 +10,7 @@ import java.util.List;
  */
 public interface TJobApplicationDao {
     boolean addJobApplication(TJobApplicationEntity jobApplication);
-    DataWrapper<List<TJobApplicationEntity>> getJobApplicationList();
+    DataWrapper<List<TJobApplicationEntity>> getJobApplicationList(String condition);
     boolean deleteJobApplication(Long jobApplicationId);
     TJobApplicationEntity getJobApplicationById(Long id);
 }

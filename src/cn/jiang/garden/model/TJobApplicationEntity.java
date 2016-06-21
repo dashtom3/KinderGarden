@@ -19,6 +19,9 @@ public class TJobApplicationEntity {
     private String mail;
     private Long fileId;
     private Long imgId;
+    private String school;
+    private Double experience;
+    private Date applicatedDate;
 
     private String fileSrc;
     private String imgSrc;
@@ -49,6 +52,36 @@ public class TJobApplicationEntity {
 
     public void setImgSrc(String imgSrc) {
         this.imgSrc = imgSrc;
+    }
+
+    @Basic
+    @Column(name = "experience")
+    public Double getExperience() {
+        return experience;
+    }
+
+    public void setExperience(Double experience) {
+        this.experience = experience;
+    }
+
+    @Basic
+    @Column(name = "applicated_date")
+    public Date getApplicatedDate() {
+        return applicatedDate;
+    }
+
+    public void setApplicatedDate(Date applicatedDate) {
+        this.applicatedDate = applicatedDate;
+    }
+
+    @Basic
+    @Column(name = "school")
+    public String getSchool() {
+        return school;
+    }
+
+    public void setSchool(String school) {
+        this.school = school;
     }
 
     @Id

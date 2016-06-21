@@ -23,7 +23,7 @@ public class TJobApplicationDaoImpl extends BaseDao<TJobApplicationEntity> imple
     }
 
     @Override
-    public DataWrapper<List<TJobApplicationEntity>> getJobApplicationList() {
+    public DataWrapper<List<TJobApplicationEntity>> getJobApplicationList(String condition) {
         DataWrapper<List<TJobApplicationEntity>> retDataWrapper = new DataWrapper<List<TJobApplicationEntity>>();
         List<TJobApplicationEntity> ret;
 
@@ -35,10 +35,17 @@ public class TJobApplicationDaoImpl extends BaseDao<TJobApplicationEntity> imple
                 "jobApplication.address as address," +
                 "jobApplication.tel as tel," +
                 "jobApplication.mail as mail," +
+                "jobApplication.school as school," +
+                "jobApplication.experience as experience," +
+                "jobApplication.applicated_date as applicatedDate," +
                 "(select img_src from t_file where id = jobApplication.file_id) as fileSrc," +
                 "(select img_src from t_file where id = jobApplication.img_id) as imgSrc "
-                + "from t_job_application jobApplication "
-                + "order by jobApplication.id desc";
+                + "from t_job_application jobApplication ";
+
+        if(condition != null && condition != "") {
+            sql += " where " + condition;
+        }
+        sql +=  " order by jobApplication.id desc";
         Session session = getSession();
         Query query = session.createSQLQuery(sql)
                 .addScalar("id", StandardBasicTypes.LONG)
@@ -51,6 +58,9 @@ public class TJobApplicationDaoImpl extends BaseDao<TJobApplicationEntity> imple
                 .addScalar("mail", StandardBasicTypes.STRING)
                 .addScalar("fileSrc", StandardBasicTypes.STRING)
                 .addScalar("imgSrc", StandardBasicTypes.STRING)
+                .addScalar("school", StandardBasicTypes.STRING)
+                .addScalar("experience", StandardBasicTypes.DOUBLE)
+                .addScalar("applicatedDate", StandardBasicTypes.DATE)
                 .setResultTransformer(Transformers.aliasToBean(TJobApplicationEntity.class));
 
         ret = query.list();

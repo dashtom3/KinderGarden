@@ -84,7 +84,10 @@ login_date timestamp,
 foreign key(user_id) references t_user(id)
 )ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-
+alter table t_menu add column time_type int
+alter table t_job_application add column school varchar(300)
+alter table t_job_application add column experience numeric(4,2)
+alter table t_job_application add column applicated_date date 
 insert into t_file( id,type) values(11,-1);--代表空文件
 --t_file type 1-6主页6张图， 7 菜品， 8 新闻， 9 简历， 10 照片，11空文件
 --t_news type 0主页 1 新闻，

@@ -13,5 +13,5 @@ import java.util.List;
 public interface JobApplicationService {
     DataWrapper<Void> addJobApplication(TJobApplicationEntity jobApplicationEntity, MultipartFile photo, MultipartFile resume,HttpServletRequest request);
     DataWrapper<Void> deleteJobApplication(String token,Long jobApplicationId,HttpServletRequest request);
-    DataWrapper<List<TJobApplicationEntity>> getJobApplicationList(String token);
+    DataWrapper<List<TJobApplicationEntity>> getJobApplicationList(String token,String condition);
 }

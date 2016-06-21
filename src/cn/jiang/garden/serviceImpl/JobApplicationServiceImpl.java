@@ -18,6 +18,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletRequest;
+import java.sql.Date;
 import java.util.List;
 
 
@@ -54,6 +55,8 @@ public class JobApplicationServiceImpl implements JobApplicationService {
             jobApplicationEntity.setImgId(photoEntity.getId() == null ? emptyFile.getId() : photoEntity.getId());
             jobApplicationEntity.setFileId(resumeEntity.getId() == null ? emptyFile.getId() : resumeEntity.getId());
 
+            jobApplicationEntity.setApplicatedDate(new Date(System.currentTimeMillis()));
+
             if(jobApplicationDao.addJobApplication(jobApplicationEntity)) {
                 retDataWrapper.setErrorCode(ErrorCodeEnum.No_Error);
             }else {
@@ -85,11 +88,11 @@ public class JobApplicationServiceImpl implements JobApplicationService {
     }
 
     @Override
-    public DataWrapper<List<TJobApplicationEntity>> getJobApplicationList(String token) {
+    public DataWrapper<List<TJobApplicationEntity>> getJobApplicationList(String token,String condition) {
         DataWrapper<List<TJobApplicationEntity>> retDataWrapper = new DataWrapper<List<TJobApplicationEntity>>();
         TUserEntity user = userDao.getUserByToken(token);
         if ( user != null && user.getType() == 0) {
-            retDataWrapper = jobApplicationDao.getJobApplicationList();
+            retDataWrapper = jobApplicationDao.getJobApplicationList(condition);
         } else{
             retDataWrapper.setErrorCode(ErrorCodeEnum.Error);
         }

@@ -13,7 +13,7 @@ public class TMenuEntity {
     private String name;
     private Integer type;
     private Long imgId;
-
+    private Long timeType;
 
     private TFileEntity image;
 
@@ -64,6 +64,16 @@ public class TMenuEntity {
 
     public void setImgId(Long imgId) {
         this.imgId = imgId;
+    }
+
+    @Basic
+    @Column(name = "time_type")
+    public Long getTimeType() {
+        return timeType;
+    }
+
+    public void setTimeType(Long timeType) {
+        this.timeType = timeType;
     }
 
     @Override
