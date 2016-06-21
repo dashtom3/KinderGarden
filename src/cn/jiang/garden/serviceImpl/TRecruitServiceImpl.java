@@ -10,6 +10,7 @@ import cn.jiang.garden.utils.DataWrapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.sql.Date;
 import java.util.List;
 
 /**
@@ -24,6 +25,7 @@ public class TRecruitServiceImpl implements TRecruitService{
     TTokenDao tokenDao;
     @Override
     public DataWrapper<Void> addTRecruit(TRecruitEntity tRecruit, String tokenString) {
+        tRecruit.setPublishDate(new Date(System.currentTimeMillis()));
         boolean result = tRecruitDao.addTRecruit(tRecruit);
         DataWrapper<Void> data = new DataWrapper<Void>();
         if(result == true){

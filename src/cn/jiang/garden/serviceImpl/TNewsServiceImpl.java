@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.sql.Date;
 import java.util.List;
 
 /**
@@ -29,6 +30,7 @@ public class TNewsServiceImpl implements TNewsService {
 
     @Override
     public DataWrapper<Void> addNews(TNewsEntity tnews,String tokenString){
+        tnews.setPublishDate(new Date(System.currentTimeMillis()));
         boolean result = tNewsDao.addTNews(tnews);
         DataWrapper<Void> data = new DataWrapper<Void>();
         if(result == true){
