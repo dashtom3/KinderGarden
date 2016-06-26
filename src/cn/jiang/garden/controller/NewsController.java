@@ -29,7 +29,7 @@ public class NewsController {
     @ResponseBody
     public DataWrapper<Void> addNews(
             @ModelAttribute TNewsEntity tNewsEntity,
-            @RequestParam MultipartFile[] files,
+            @RequestParam(value = "files",required = false) MultipartFile[] files,
             @RequestParam(value = "token",required = false) String token,
             HttpServletRequest request) throws IOException {
             for(int i=0;i<files.length;i++){
