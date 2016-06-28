@@ -34,6 +34,7 @@ public class UserServiceImpl implements UserService {
                 boolean loginState = false;
                 if (token == null) {
                     token = new TTokenEntity();
+                    System.out.println(tokenString);
                     token.setToken(tokenString);
                     token.setLoginDate(new Timestamp(System.currentTimeMillis()));
                     token.setUserId(user.getId());
