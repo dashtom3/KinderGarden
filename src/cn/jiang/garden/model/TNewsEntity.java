@@ -19,6 +19,11 @@ public class TNewsEntity {
     private Long imgId1;
     private Long imgId2;
     private Long imgId3;
+    private Long imgId4;
+    private Long imgId5;
+    private Long imgId6;
+    private Long imgId7;
+
 
     private List<TFileEntity> homeBanner;
     private List<TFileEntity> homePic;
@@ -130,6 +135,47 @@ public class TNewsEntity {
 
     public void setImgId3(Long imgId3) {
         this.imgId3 = imgId3;
+    }
+
+
+    @Basic
+    @Column(name = "img_id4")
+    public Long getImgId4() {
+        return imgId4;
+    }
+
+    public void setImgId4(Long imgId4) {
+        this.imgId4 = imgId4;
+    }
+
+    @Basic
+    @Column(name = "img_id5")
+    public Long getImgId5() {
+        return imgId5;
+    }
+
+    public void setImgId5(Long imgId5) {
+        this.imgId5 = imgId5;
+    }
+
+    @Basic
+    @Column(name = "img_id6")
+    public Long getImgId6() {
+        return imgId6;
+    }
+
+    public void setImgId6(Long imgId6) {
+        this.imgId6 = imgId6;
+    }
+
+    @Basic
+    @Column(name = "img_id7")
+    public Long getImgId7() {
+        return imgId7;
+    }
+
+    public void setImgId7(Long imgId7) {
+        this.imgId7 = imgId7;
     }
 
     @Override

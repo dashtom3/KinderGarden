@@ -4,8 +4,6 @@
     <data-source name="MySQL - jeff@182.92.226.65" uuid="8b6213b3-ce2b-444d-af60-62cc799c4689">
       <secret-storage>master_key</secret-storage>
       <user-name>root</user-name>
-      <schema-pattern>jeff.*</schema-pattern>
-      <default-schemas>jeff.*</default-schemas>
     </data-source>
   </component>
 </project>

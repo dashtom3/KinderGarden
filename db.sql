@@ -30,9 +30,13 @@ name varchar(300),
 intro text,
 publish_date date,
 type int,
-img_id1 bigint(20) unsigned not null,
-img_id2 bigint(20) unsigned not null,
-img_id3 bigint(20) unsigned not null
+img_id1 bigint(20) unsigned,
+img_id2 bigint(20) unsigned,
+img_id3 bigint(20) unsigned,
+img_id4 bigint(20) unsigned,
+img_id5 bigint(20) unsigned,
+img_id6 bigint(20) unsigned,
+img_id7 bigint(20) unsigned
 )ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 create table t_job_application(

@@ -32,16 +32,24 @@ public class NewsController {
             @RequestParam(value = "files",required = false) MultipartFile[] files,
             @RequestParam(value = "token",required = false) String token,
             HttpServletRequest request) throws IOException {
-            for(int i=0;i<files.length;i++){
-                TFileEntity file = new TFileEntity();
-                file.setType(8);
+        for(int i=0;i<files.length;i++){
+            TFileEntity file = new TFileEntity();
+            file.setType(8);
             fileService.uploadFile(request,token,file,files[i]);
             if(i == 0){
                 tNewsEntity.setImgId1(file.getId());
             }else if(i == 1){
                 tNewsEntity.setImgId2(file.getId());
-            }else{
+            }else if(i == 2){
                 tNewsEntity.setImgId3(file.getId());
+            }else if(i == 3){
+                tNewsEntity.setImgId4(file.getId());
+            }else if(i == 4){
+                tNewsEntity.setImgId5(file.getId());
+            }else if(i == 5){
+                tNewsEntity.setImgId6(file.getId());
+            }else if(i == 6){
+                tNewsEntity.setImgId7(file.getId());
             }
         }
         return tNewsService.addNews(tNewsEntity,token);
@@ -62,8 +70,16 @@ public class NewsController {
                     tNewsEntity.setImgId1(file.getId());
                 }else if(i == 1){
                     tNewsEntity.setImgId2(file.getId());
-                }else{
+                }else if(i == 2){
                     tNewsEntity.setImgId3(file.getId());
+                }else if(i == 3){
+                    tNewsEntity.setImgId4(file.getId());
+                }else if(i == 4){
+                    tNewsEntity.setImgId5(file.getId());
+                }else if(i == 5){
+                    tNewsEntity.setImgId6(file.getId());
+                }else if(i == 6){
+                    tNewsEntity.setImgId7(file.getId());
                 }
             }
         return tNewsService.updateNews(tNewsEntity,token);
@@ -80,6 +96,10 @@ public class NewsController {
         fileService.deleteFile(tNewsEntity.getImgId1(),token,request);
         fileService.deleteFile(tNewsEntity.getImgId2(),token,request);
         fileService.deleteFile(tNewsEntity.getImgId3(),token,request);
+        fileService.deleteFile(tNewsEntity.getImgId4(),token,request);
+        fileService.deleteFile(tNewsEntity.getImgId5(),token,request);
+        fileService.deleteFile(tNewsEntity.getImgId6(),token,request);
+        fileService.deleteFile(tNewsEntity.getImgId7(),token,request);
         return result;
     }
     //新闻列表 api/news/getNewsList?token=x  已测
