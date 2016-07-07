@@ -25,6 +25,10 @@ public class NavigationController {
     public String newsPage(){
         return "../news";
     }
+    @RequestMapping(value = "/news/publish")
+    public String publishNewsPage() {
+        return "../newsPublish";
+    }
     @RequestMapping(value="/recruit")
     public String recruitPage(){
         return "../recruitment";
