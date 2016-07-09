@@ -79,15 +79,10 @@
                     <span class="sr-only">Next</span>
                 </a>
             </div>
-            <div class="row jeff-padding-offset" style="background: #D9D9D9;">
-                <h2>2015 Winter Camp</h2>
-                <p>10 Feb 2015</p>
-                <p>Taierzhuang Rd Campus</p><br>
-                <p>SHARJAH: Children ages 5-12 can take part in reading activities, arts and crafts, cooking, photography, theatre classes and more at Maktaba’s 2015 Winter Camp, held in collaboration with edutainment organisers, The Garage Kids, from Dec 20th to 31, 9:30am to 1:30pm.</p>
-                <p>The bookstore and café at Qasba, which is the latest imprint of the publishing company, Kalimat Group, are providing a number of activities for little ones in a bid to help them develop their social skills, shape their minds through reading, and stimulate them via various physical activities.</p>
-                <p>Speaking on the camp, Tamer Said, Managing Director of Kalimat Group, said: “With each Kalimat storybook that is narrated to children, there is a value to be learnt, a skill to be developed, imagination to be nurtured, and great fun to be had.</p>
-                <p>“We arranged this Winter Camp, in collaboration with The Garage Kids, to encourage children to be excited about learning and to engage in character-building team work based on a range of Kalimat Group publications.”</p>
-                <p>A number of exciting activities are on offer that revolve around a collection of fun and educational Kalimat books, including storytelling and reading sessions, painting and illustration, arts and crafts “The Genius Maker” activities (scientific experiments, exploration and discovery, tinkering, and robotics and engineering), theatre classes, physical education, and special activities such as cooking, photography, public speaking and calligraphy.<p>
+            <div id= "newsContainer" class="row jeff-padding-offset" style="background: #D9D9D9;">
+                <h2 id="newsTitle"></h2>
+                <p id="newsDate"></p>
+                <pre id="newsContent"></pre>
                 <div>
                     <img src="<c:url value="/public/img/weixin.png"/>" height="50">
                     <img src="<c:url value="/public/img/weibo.png"/>" height="50">
@@ -155,8 +150,9 @@
                 success: function(success) {
                     var data = success.data;
                     for (var i = 0; i < data.newsPic.length; i ++) {
-                        console.log(data.newsPic[i].imgSrc);
-                        initPictures(i == 0, i, data.newsPic[i].imgSrc);
+                        (function(num) {
+                            initPictures(num == 0, num, data.newsPic[num].imgSrc);
+                        })(i);
                     }
 
                 },
@@ -176,6 +172,10 @@
                         + "' class='active'");
                 $('.carousel-inner').append("<div class='item active'><img src='/Jeff/" + src + "'></div>");
             }
+
+        }
+
+        function initContent(title, date, content) {
 
         }
 
