@@ -12,4 +12,5 @@ public interface TFileDao {
     boolean updateFile(TFileEntity file);
     DataWrapper<List<TFileEntity>> findByType(Integer type);
     TFileEntity getFileById(Long id);
+    List<TFileEntity> getFileByIds(String ids);
 }
