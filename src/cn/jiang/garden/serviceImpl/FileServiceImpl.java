@@ -97,7 +97,7 @@ public class FileServiceImpl implements FileService {
             fileDir.mkdirs();
         }
         try {
-            FileOutputStream out = new FileOutputStream(filePath + "\\"
+            FileOutputStream out = new FileOutputStream(filePath + "/"
                     + newFileName);
             // 写入文件
             out.write(file.getBytes());
