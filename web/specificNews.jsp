@@ -149,12 +149,13 @@
                 data: 'token=123',
                 success: function(success) {
                     var data = success.data;
+                    initContent(data.name, data.publishDate, data.intro);
+
                     for (var i = 0; i < data.newsPic.length; i ++) {
                         (function(num) {
                             initPictures(num == 0, num, data.newsPic[num].imgSrc);
                         })(i);
                     }
-
                 },
                 error: function(error) {
                     console.log(error);
@@ -169,14 +170,16 @@
                 $('.carousel-inner').append("<div class='item active'><img src='/Jeff/" + src + "'></div>");
             } else {
                 $('.carousel-indicators').append("<li data-target='#carouselDiv' data-slide-to='" + index
-                        + "' class='active'");
-                $('.carousel-inner').append("<div class='item active'><img src='/Jeff/" + src + "'></div>");
+                        + "'");
+                $('.carousel-inner').append("<div class='item'><img src='/Jeff/" + src + "'></div>");
             }
 
         }
 
         function initContent(title, date, content) {
-
+            $('#newsTitle').text(title);
+            $('#newsDate').text(date);
+            $('#newsContent').text(content);
         }
 
     });
