@@ -6,6 +6,7 @@ import cn.jiang.garden.model.TUserEntity;
 import cn.jiang.garden.utils.MD5Util;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.sql.Date;
@@ -21,10 +22,16 @@ public class NavigationController {
     public String aboutPage(){
         return "../homepage";
     }
-    @RequestMapping(value="/news")
-    public String newsPage(){
-        return "../news";
+//    @RequestMapping(value="/news")
+//    public String newsPage(){
+//        return "../news";
+//    }
+    @RequestMapping(value = "/news/{id}")
+    public String specificNewsPage(@PathVariable String id) {
+        System.out.println("id: " + id);
+        return "../specificNews";
     }
+
     @RequestMapping(value = "/news/publish")
     public String publishNewsPage() {
         return "../newsPublish";
